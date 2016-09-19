@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>王纯建的博客</title>
   <subtitle>hexo搭建</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/blog/atom.xml" rel="self"/>
   
-  <link href="http://nodejs.wxwztj.com/"/>
+  <link href="http://blog.wangchunjian.win/"/>
   <updated>2016-09-18T05:06:15.428Z</updated>
-  <id>http://nodejs.wxwztj.com/</id>
+  <id>http://blog.wangchunjian.win/</id>
   
   <author>
     <name>wcj2020</name>
@@ -17,14 +17,14 @@
   
   <entry>
     <title>鼠标滚动mousewheel和touch滑动全屏切换效果</title>
-    <link href="http://nodejs.wxwztj.com/2016/09/17/%E9%BC%A0%E6%A0%87%E6%BB%9A%E5%8A%A8mousewheel%E5%92%8Ctouch%E6%BB%91%E5%8A%A8%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2%E6%95%88%E6%9E%9C/"/>
-    <id>http://nodejs.wxwztj.com/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/</id>
+    <link href="http://blog.wangchunjian.win/2016/09/17/%E9%BC%A0%E6%A0%87%E6%BB%9A%E5%8A%A8mousewheel%E5%92%8Ctouch%E6%BB%91%E5%8A%A8%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2%E6%95%88%E6%9E%9C/"/>
+    <id>http://blog.wangchunjian.win/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/</id>
     <published>2016-09-17T07:49:00.000Z</published>
     <updated>2016-09-18T05:06:15.428Z</updated>
     
     <content type="html"><![CDATA[<h3 id="根据鼠标滚动方向或者手机滑动方向然后切换上一屏或下一屏。感觉类似翻页。"><a href="#根据鼠标滚动方向或者手机滑动方向然后切换上一屏或下一屏。感觉类似翻页。" class="headerlink" title="根据鼠标滚动方向或者手机滑动方向然后切换上一屏或下一屏。感觉类似翻页。"></a>根据鼠标滚动方向或者手机滑动方向然后切换上一屏或下一屏。感觉类似翻页。</h3><p><img src="http://blog.wangchunjian.win/2016/2/demo.gif" alt="效果图"></p>
 <p>兼容火狐、360极速和兼容模式…安卓手机360浏览器测试也正常</p>
-<p><a href="http://blog.wangchunjian.win/2016/2/index4.html" target="_blank" rel="external">效果页面</a></p>
+<p><a href="http://blog.wangchunjian.win/2016/2/index4.html">效果页面</a></p>
 <a id="more"></a>
 <p>兼容性或性能可能比较烂,不过都是最简单的JS实现的。其实就类似于一些轮播或banner图切换效果。只不过这个是全屏。</p>
 <p>最外层的<code>container</code>高度为300%；里面放置三个<code>div</code>从上往下依次排列。<code>css</code>控制下每个<code>div</code>都是铺满浏览器可视窗口。</p>
@@ -41,22 +41,22 @@
     
     </summary>
     
-      <category term="javascript" scheme="http://nodejs.wxwztj.com/categories/javascript/"/>
+      <category term="javascript" scheme="http://blog.wangchunjian.win/categories/javascript/"/>
     
     
-      <category term="h5" scheme="http://nodejs.wxwztj.com/tags/h5/"/>
+      <category term="h5" scheme="http://blog.wangchunjian.win/tags/h5/"/>
     
   </entry>
   
   <entry>
     <title>CSS3 Filter的特效</title>
-    <link href="http://nodejs.wxwztj.com/2016/09/16/%E6%B5%85%E8%B0%88CSS3-Filter%E7%9A%8410%E7%A7%8D%E7%89%B9%E6%95%88/"/>
-    <id>http://nodejs.wxwztj.com/2016/09/16/浅谈CSS3-Filter的10种特效/</id>
+    <link href="http://blog.wangchunjian.win/2016/09/16/%E6%B5%85%E8%B0%88CSS3-Filter%E7%9A%8410%E7%A7%8D%E7%89%B9%E6%95%88/"/>
+    <id>http://blog.wangchunjian.win/2016/09/16/浅谈CSS3-Filter的10种特效/</id>
     <published>2016-09-16T07:51:00.000Z</published>
     <updated>2016-09-18T05:06:48.065Z</updated>
     
     <content type="html"><![CDATA[<h2 id="css语法"><a href="#css语法" class="headerlink" title="css语法"></a>css语法</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">filter: none | blur() | brightness() | contrast() | drop-shadow() | grayscale() |</div><div class="line">hue-rotate() | invert() | opacity() | saturate() | sepia() | url();</div></pre></td></tr></table></figure>
-<h2 id="高斯模糊-blur-示例"><a href="#高斯模糊-blur-示例" class="headerlink" title="高斯模糊(blur)示例"></a>高斯模糊(blur)示例</h2><p><a href="http://blog.wangchunjian.win/2016/css-filter/blur.html" target="_blank" rel="external">demo</a><br><a id="more"></a><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh"</span> <span class="attr">class</span>=<span class="string">"no-js"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-class">.example</span> &#123;</div><div class="line">	    <span class="attribute">padding</span>: .<span class="number">625rem</span> <span class="number">1.825rem</span> .<span class="number">625rem</span> <span class="number">2.5rem</span>;</div><div class="line">	    <span class="attribute">border</span>: <span class="number">1px</span> <span class="number">#ccc</span> dashed;</div><div class="line">	    <span class="attribute">position</span>: relative;</div><div class="line">	    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> .<span class="number">625rem</span> <span class="number">0</span>;</div><div class="line">	    <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;</div><div class="line">        <span class="attribute">position</span>: absolute;   </div><div class="line">        <span class="attribute">top</span>: <span class="number">50%</span>;   </div><div class="line">        <span class="attribute">left</span>: <span class="number">50%</span>;   </div><div class="line">        <span class="attribute">-webkit-transform</span>: <span class="built_in">translate</span>(-50%, -50%);   </div><div class="line">        <span class="attribute">-moz-transform</span>: <span class="built_in">translate</span>(-50%, -50%);   </div><div class="line">        <span class="attribute">-ms-transform</span>: <span class="built_in">translate</span>(-50%, -50%);   </div><div class="line">        <span class="attribute">-o-transform</span>: <span class="built_in">translate</span>(-50%, -50%);   </div><div class="line">        <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%); </div><div class="line">	&#125;</div><div class="line"><span class="selector-class">.example</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">content</span>: <span class="built_in">attr</span>(data-text);</div><div class="line">    <span class="attribute">text-transform</span>: lowercase;</div><div class="line">    <span class="attribute">left</span>: <span class="number">1.5rem</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">11.875rem</span>;</div><div class="line">    <span class="attribute">color</span>: gray;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1rem</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">1rem</span>;</div><div class="line">    <span class="attribute">text-align</span>: right;</div><div class="line">    <span class="attribute">white-space</span>: nowrap;</div><div class="line">    <span class="attribute">direction</span>: ltr;</div><div class="line">    <span class="attribute">width</span>: <span class="number">12.5rem</span>;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(-90deg);</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-90deg);</div><div class="line">    <span class="attribute">-webkit-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</div><div class="line">    <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">img</span> &#123;</div><div class="line">    <span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(5px); <span class="comment">/* Chrome, Safari, Opera */</span></div><div class="line">    <span class="attribute">filter</span>: <span class="built_in">blur</span>(5px);</div><div class="line">	<span class="attribute">-webkit-transition</span>: all .<span class="number">5s</span> ease-in-out;</div><div class="line">    <span class="attribute">-moz-transition</span>: all .<span class="number">5s</span> ease-in-out;</div><div class="line">    <span class="attribute">-o-transition</span>: all .<span class="number">5s</span> ease-in-out;</div><div class="line">    <span class="attribute">transition</span>: all .<span class="number">5s</span> ease-in-out;</div><div class="line">    <span class="attribute">-webkit-backface-visibility</span>: hidden;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">translateZ</span>(0) <span class="built_in">scale</span>(1.0, 1.0);</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">filter</span>:none&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example"</span> <span class="attr">data-text</span>=<span class="string">"example"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>图片使用高斯模糊效果:<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://blog.wangchunjian.win/2016/marry.jpg"</span> <span class="attr">alt</span>=<span class="string">"marry"</span> &gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="高斯模糊-blur-示例"><a href="#高斯模糊-blur-示例" class="headerlink" title="高斯模糊(blur)示例"></a>高斯模糊(blur)示例</h2><p><a href="http://blog.wangchunjian.win/2016/css-filter/blur.html">demo</a><br><a id="more"></a><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh"</span> <span class="attr">class</span>=<span class="string">"no-js"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-class">.example</span> &#123;</div><div class="line">	    <span class="attribute">padding</span>: .<span class="number">625rem</span> <span class="number">1.825rem</span> .<span class="number">625rem</span> <span class="number">2.5rem</span>;</div><div class="line">	    <span class="attribute">border</span>: <span class="number">1px</span> <span class="number">#ccc</span> dashed;</div><div class="line">	    <span class="attribute">position</span>: relative;</div><div class="line">	    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> .<span class="number">625rem</span> <span class="number">0</span>;</div><div class="line">	    <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;</div><div class="line">        <span class="attribute">position</span>: absolute;   </div><div class="line">        <span class="attribute">top</span>: <span class="number">50%</span>;   </div><div class="line">        <span class="attribute">left</span>: <span class="number">50%</span>;   </div><div class="line">        <span class="attribute">-webkit-transform</span>: <span class="built_in">translate</span>(-50%, -50%);   </div><div class="line">        <span class="attribute">-moz-transform</span>: <span class="built_in">translate</span>(-50%, -50%);   </div><div class="line">        <span class="attribute">-ms-transform</span>: <span class="built_in">translate</span>(-50%, -50%);   </div><div class="line">        <span class="attribute">-o-transform</span>: <span class="built_in">translate</span>(-50%, -50%);   </div><div class="line">        <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%); </div><div class="line">	&#125;</div><div class="line"><span class="selector-class">.example</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">content</span>: <span class="built_in">attr</span>(data-text);</div><div class="line">    <span class="attribute">text-transform</span>: lowercase;</div><div class="line">    <span class="attribute">left</span>: <span class="number">1.5rem</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">11.875rem</span>;</div><div class="line">    <span class="attribute">color</span>: gray;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">1rem</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1rem</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">1rem</span>;</div><div class="line">    <span class="attribute">text-align</span>: right;</div><div class="line">    <span class="attribute">white-space</span>: nowrap;</div><div class="line">    <span class="attribute">direction</span>: ltr;</div><div class="line">    <span class="attribute">width</span>: <span class="number">12.5rem</span>;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">rotate</span>(-90deg);</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-90deg);</div><div class="line">    <span class="attribute">-webkit-transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</div><div class="line">    <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">img</span> &#123;</div><div class="line">    <span class="attribute">-webkit-filter</span>: <span class="built_in">blur</span>(5px); <span class="comment">/* Chrome, Safari, Opera */</span></div><div class="line">    <span class="attribute">filter</span>: <span class="built_in">blur</span>(5px);</div><div class="line">	<span class="attribute">-webkit-transition</span>: all .<span class="number">5s</span> ease-in-out;</div><div class="line">    <span class="attribute">-moz-transition</span>: all .<span class="number">5s</span> ease-in-out;</div><div class="line">    <span class="attribute">-o-transition</span>: all .<span class="number">5s</span> ease-in-out;</div><div class="line">    <span class="attribute">transition</span>: all .<span class="number">5s</span> ease-in-out;</div><div class="line">    <span class="attribute">-webkit-backface-visibility</span>: hidden;</div><div class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">translateZ</span>(0) <span class="built_in">scale</span>(1.0, 1.0);</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">filter</span>:none&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"example"</span> <span class="attr">data-text</span>=<span class="string">"example"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>图片使用高斯模糊效果:<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://blog.wangchunjian.win/2016/marry.jpg"</span> <span class="attr">alt</span>=<span class="string">"marry"</span> &gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>注意：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> Internet Explorer 不支持 filter 属性。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
@@ -66,24 +66,24 @@
     
     </summary>
     
-      <category term="css3" scheme="http://nodejs.wxwztj.com/categories/css3/"/>
+      <category term="css3" scheme="http://blog.wangchunjian.win/categories/css3/"/>
     
     
-      <category term="filter" scheme="http://nodejs.wxwztj.com/tags/filter/"/>
+      <category term="filter" scheme="http://blog.wangchunjian.win/tags/filter/"/>
     
   </entry>
   
   <entry>
     <title>Parallux-响应式网页视差效果</title>
-    <link href="http://nodejs.wxwztj.com/2016/09/16/Parallux-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E8%A7%86%E5%B7%AE%E6%95%88%E6%9E%9C/"/>
-    <id>http://nodejs.wxwztj.com/2016/09/16/Parallux-响应式网页视差效果/</id>
+    <link href="http://blog.wangchunjian.win/2016/09/16/Parallux-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E8%A7%86%E5%B7%AE%E6%95%88%E6%9E%9C/"/>
+    <id>http://blog.wangchunjian.win/2016/09/16/Parallux-响应式网页视差效果/</id>
     <published>2016-09-16T07:10:34.000Z</published>
     <updated>2016-09-18T05:08:05.975Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Parallax-js"><a href="#Parallax-js" class="headerlink" title="Parallax.js"></a>Parallax.js</h1><p>示例：</p>
 <ul>
-<li><a href="http://blog.wangchunjian.win/2016/2/" target="_blank" rel="external">Parallux-响应式网页滚动视觉差特效 &amp; CSS图片filter的blur模糊和灰色gray</a> </li>
-<li><a href="http://blog.wangchunjian.win/2016/1/" target="_blank" rel="external">纯css3实现视觉差效果</a><a id="more"></a>
+<li><a href="http://blog.wangchunjian.win/2016/2/">Parallux-响应式网页滚动视觉差特效 &amp; CSS图片filter的blur模糊和灰色gray</a> </li>
+<li><a href="http://blog.wangchunjian.win/2016/1/">纯css3实现视觉差效果</a><a id="more"></a>
 </li>
 </ul>
 <p>Parallax Engine that reacts to the orientation of a smart device. Where no gyroscope or motion detection hardware is available, the position of the cursor is used instead.</p>
@@ -224,8 +224,8 @@
   
   <entry>
     <title>python 网易(MIT)公开课教程分享</title>
-    <link href="http://nodejs.wxwztj.com/2016/09/16/python-%E7%BD%91%E6%98%93%E5%85%AC%E5%BC%80%E8%AF%BE%E6%95%99%E7%A8%8B%E5%88%86%E4%BA%AB/"/>
-    <id>http://nodejs.wxwztj.com/2016/09/16/python-网易公开课教程分享/</id>
+    <link href="http://blog.wangchunjian.win/2016/09/16/python-%E7%BD%91%E6%98%93%E5%85%AC%E5%BC%80%E8%AF%BE%E6%95%99%E7%A8%8B%E5%88%86%E4%BA%AB/"/>
+    <id>http://blog.wangchunjian.win/2016/09/16/python-网易公开课教程分享/</id>
     <published>2016-09-16T00:41:00.000Z</published>
     <updated>2016-09-16T00:42:45.925Z</updated>
     
@@ -240,14 +240,14 @@
     </summary>
     
     
-      <category term="python" scheme="http://nodejs.wxwztj.com/tags/python/"/>
+      <category term="python" scheme="http://blog.wangchunjian.win/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>http协议何时开启keep-alive(转)</title>
-    <link href="http://nodejs.wxwztj.com/2016/09/14/http%E5%8D%8F%E8%AE%AE%E4%BD%95%E6%97%B6%E5%BC%80%E5%90%AFkeep-alive/"/>
-    <id>http://nodejs.wxwztj.com/2016/09/14/http协议何时开启keep-alive/</id>
+    <link href="http://blog.wangchunjian.win/2016/09/14/http%E5%8D%8F%E8%AE%AE%E4%BD%95%E6%97%B6%E5%BC%80%E5%90%AFkeep-alive/"/>
+    <id>http://blog.wangchunjian.win/2016/09/14/http协议何时开启keep-alive/</id>
     <published>2016-09-14T05:20:00.000Z</published>
     <updated>2016-09-14T05:30:14.584Z</updated>
     
@@ -280,19 +280,19 @@
     
     </summary>
     
-      <category term="http" scheme="http://nodejs.wxwztj.com/categories/http/"/>
+      <category term="http" scheme="http://blog.wangchunjian.win/categories/http/"/>
     
     
-      <category term="http" scheme="http://nodejs.wxwztj.com/tags/http/"/>
+      <category term="http" scheme="http://blog.wangchunjian.win/tags/http/"/>
     
-      <category term="keep-alive" scheme="http://nodejs.wxwztj.com/tags/keep-alive/"/>
+      <category term="keep-alive" scheme="http://blog.wangchunjian.win/tags/keep-alive/"/>
     
   </entry>
   
   <entry>
     <title>python使用aiohttp异步框架编写web 并部署到centos上</title>
-    <link href="http://nodejs.wxwztj.com/2016/09/13/%E4%BD%BF%E7%94%A8aiohttp%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99web/"/>
-    <id>http://nodejs.wxwztj.com/2016/09/13/使用aiohttp异步框架编写web/</id>
+    <link href="http://blog.wangchunjian.win/2016/09/13/%E4%BD%BF%E7%94%A8aiohttp%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99web/"/>
+    <id>http://blog.wangchunjian.win/2016/09/13/使用aiohttp异步框架编写web/</id>
     <published>2016-09-13T00:40:00.000Z</published>
     <updated>2016-09-18T05:07:19.924Z</updated>
     
@@ -332,7 +332,7 @@
 <p>必须使用<code>exit</code>退出,直接断开或关闭Xshell,<code>nohup</code>的这条后台进程会挂掉。。。<br><code>nohup /usr/bin/python3 test.py &gt;/dev/null 2&gt;&amp;1 &amp;</code> 如果不想输出任何信息，可以在<code>nohup command</code> 后面加上<code>&gt;/dev/null 2&gt;&amp;1</code>,最后末尾加上<code>&amp;</code>结束,只输出错误日志并指定错误输出文件<code>nohup ./program &gt;/dev/null 2&gt;log &amp;</code> 文件名缺省则默认为<code>nohup.out</code>.</p>
 </blockquote>
 <p>界面使用<code>Uikit</code>和<code>Vue.js</code>.Vue的绑定感觉和Angularjs相似,<code>aiohttp</code>也可以编写<code>middleware</code>实现错误处理、验证登录、控制访问权限等。</p>
-<h2 id="网站最后效果展示"><a href="#网站最后效果展示" class="headerlink" title="网站最后效果展示"></a><a href="http://python.wangchunjian.win/" target="_blank" rel="external">网站最后效果展示</a></h2><h2 id="代码下载"><a href="#代码下载" class="headerlink" title="代码下载"></a><a href="http://blog.wangchunjian.win/2016/awesome-python3-webapp.zip" target="_blank" rel="external">代码下载</a></h2><p><code>test.py</code>是入口文件,<code>app.py</code>以及其他文件是廖老师的demo。</p>
+<h2 id="网站最后效果展示"><a href="#网站最后效果展示" class="headerlink" title="网站最后效果展示"></a><a href="http://python.wangchunjian.win/" target="_blank" rel="external">网站最后效果展示</a></h2><h2 id="代码下载"><a href="#代码下载" class="headerlink" title="代码下载"></a><a href="http://blog.wangchunjian.win/2016/awesome-python3-webapp.zip">代码下载</a></h2><p><code>test.py</code>是入口文件,<code>app.py</code>以及其他文件是廖老师的demo。</p>
 <p><code>orm</code>想使用<code>SQLAlchemy</code>异步编程的话,只能使用<code>aiomysql.sa</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="keyword">import</span> sqlalchemy <span class="keyword">as</span> sa</div><div class="line"><span class="keyword">from</span> sqlalchemy.types <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> sqlalchemy.sql <span class="keyword">import</span> func</div><div class="line"><span class="keyword">import</span> time,uuid,hashlib</div><div class="line"></div><div class="line"><span class="keyword">from</span> aiomysql.sa <span class="keyword">import</span> create_engine</div><div class="line"></div><div class="line"></div><div class="line">metadata=sa.MetaData()</div><div class="line"></div><div class="line"></div><div class="line">users = sa.Table(<span class="string">'users'</span>, metadata,</div><div class="line">               sa.Column(<span class="string">'id'</span>, Integer, primary_key=<span class="keyword">True</span>),</div><div class="line">               sa.Column(<span class="string">'email'</span>,String(<span class="number">50</span>)),</div><div class="line">               sa.Column(<span class="string">'passwd'</span>,String(<span class="number">50</span>)),</div><div class="line">               sa.Column(<span class="string">'image'</span>,String(<span class="number">500</span>)),</div><div class="line">               sa.Column(<span class="string">'admin'</span>,BOOLEAN),</div><div class="line">               sa.Column(<span class="string">'name'</span>, String(<span class="number">255</span>)),</div><div class="line">               sa.Column(<span class="string">'created_at'</span>,FLOAT())</div><div class="line">                 )</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">next_id</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'%015d%s000'</span> % (int(time.time() * <span class="number">1000</span>),uuid.uuid4().hex)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">pwd_user</span><span class="params">(id,passwd)</span>:</span></div><div class="line">    sha1 = hashlib.sha1()</div><div class="line">    sha1.update(id.encode(<span class="string">'utf-8'</span>))</div><div class="line">    sha1.update(<span class="string">b':'</span>)</div><div class="line">    sha1.update(passwd.encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">return</span> sha1.hexdigest()</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@asyncio.coroutine</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_pool</span><span class="params">(loop,**kw)</span>:</span></div><div class="line">    <span class="keyword">global</span> __pool</div><div class="line">    __pool = <span class="keyword">yield</span> <span class="keyword">from</span> create_engine(</div><div class="line">        host = kw.get(<span class="string">'host'</span>,<span class="string">'127.0.0.1'</span>),</div><div class="line">        port = kw.get(<span class="string">'port'</span>,<span class="number">3306</span>),</div><div class="line">        user = kw[<span class="string">'user'</span>],</div><div class="line">        password = kw[<span class="string">'password'</span>],</div><div class="line">        db = kw[<span class="string">'db'</span>],</div><div class="line">        charset = kw.get(<span class="string">'charset'</span>,<span class="string">'utf8'</span>),</div><div class="line">        autocommit = kw.get(<span class="string">'autocommit'</span>,<span class="keyword">True</span>),</div><div class="line">        maxsize = kw.get(<span class="string">'maxsize'</span>,<span class="number">10</span>),</div><div class="line">        minsize = kw.get(<span class="string">'minsize'</span>,<span class="number">1</span>),</div><div class="line">        loop = loop</div><div class="line">    )</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@asyncio.coroutine</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">go</span><span class="params">(in_loop)</span>:</span></div><div class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> create_pool(in_loop,user=<span class="string">'root'</span>,password=<span class="string">'root'</span>,db=<span class="string">'awesome'</span>)</div><div class="line">    <span class="keyword">global</span> __pool</div><div class="line">    <span class="keyword">with</span> (<span class="keyword">yield</span> <span class="keyword">from</span> __pool) <span class="keyword">as</span> conn:</div><div class="line">        user_id=next_id()</div><div class="line">        print(users.insert().values(name=<span class="string">'jinja2'</span>,id=user_id,passwd=pwd_user(user_id,<span class="string">'123456'</span>),</div><div class="line">                                                       email=<span class="string">'222@qq.com'</span>,image=<span class="string">'image:blank'</span>))</div><div class="line">        res = <span class="keyword">yield</span> <span class="keyword">from</span> conn.execute(users.select())</div><div class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> res:</div><div class="line">            print(row)</div><div class="line"></div><div class="line"></div><div class="line">loop=asyncio.get_event_loop()</div><div class="line">loop.run_until_complete(go(loop))</div><div class="line"></div><div class="line">__pool.close()</div><div class="line">loop.run_until_complete(__pool.wait_closed())</div><div class="line">loop.close()</div></pre></td></tr></table></figure></p>
 ]]></content>
     
@@ -342,23 +342,23 @@
     
     </summary>
     
-      <category term="python" scheme="http://nodejs.wxwztj.com/categories/python/"/>
+      <category term="python" scheme="http://blog.wangchunjian.win/categories/python/"/>
     
     
-      <category term="python" scheme="http://nodejs.wxwztj.com/tags/python/"/>
+      <category term="python" scheme="http://blog.wangchunjian.win/tags/python/"/>
     
-      <category term="nohup" scheme="http://nodejs.wxwztj.com/tags/nohup/"/>
+      <category term="nohup" scheme="http://blog.wangchunjian.win/tags/nohup/"/>
     
-      <category term="aiohttp" scheme="http://nodejs.wxwztj.com/tags/aiohttp/"/>
+      <category term="aiohttp" scheme="http://blog.wangchunjian.win/tags/aiohttp/"/>
     
-      <category term="jinja2" scheme="http://nodejs.wxwztj.com/tags/jinja2/"/>
+      <category term="jinja2" scheme="http://blog.wangchunjian.win/tags/jinja2/"/>
     
   </entry>
   
   <entry>
     <title>python metaclass django orm demo</title>
-    <link href="http://nodejs.wxwztj.com/2016/09/06/python-metaclass-django-orm-demo/"/>
-    <id>http://nodejs.wxwztj.com/2016/09/06/python-metaclass-django-orm-demo/</id>
+    <link href="http://blog.wangchunjian.win/2016/09/06/python-metaclass-django-orm-demo/"/>
+    <id>http://blog.wangchunjian.win/2016/09/06/python-metaclass-django-orm-demo/</id>
     <published>2016-09-06T08:28:00.000Z</published>
     <updated>2016-09-16T07:18:27.064Z</updated>
     
@@ -374,19 +374,19 @@
     
     </summary>
     
-      <category term="python" scheme="http://nodejs.wxwztj.com/categories/python/"/>
+      <category term="python" scheme="http://blog.wangchunjian.win/categories/python/"/>
     
     
-      <category term="orm" scheme="http://nodejs.wxwztj.com/tags/orm/"/>
+      <category term="orm" scheme="http://blog.wangchunjian.win/tags/orm/"/>
     
-      <category term="metaclass" scheme="http://nodejs.wxwztj.com/tags/metaclass/"/>
+      <category term="metaclass" scheme="http://blog.wangchunjian.win/tags/metaclass/"/>
     
   </entry>
   
   <entry>
     <title>局域网arp攻击解决方法</title>
-    <link href="http://nodejs.wxwztj.com/2016/08/19/%E5%B1%80%E5%9F%9F%E7%BD%91arp%E6%94%BB%E5%87%BB%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://nodejs.wxwztj.com/2016/08/19/局域网arp攻击解决方法/</id>
+    <link href="http://blog.wangchunjian.win/2016/08/19/%E5%B1%80%E5%9F%9F%E7%BD%91arp%E6%94%BB%E5%87%BB%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://blog.wangchunjian.win/2016/08/19/局域网arp攻击解决方法/</id>
     <published>2016-08-19T02:26:00.000Z</published>
     <updated>2016-09-16T07:21:44.799Z</updated>
     
@@ -406,16 +406,16 @@
     </summary>
     
     
-      <category term="arp" scheme="http://nodejs.wxwztj.com/tags/arp/"/>
+      <category term="arp" scheme="http://blog.wangchunjian.win/tags/arp/"/>
     
-      <category term="netsh" scheme="http://nodejs.wxwztj.com/tags/netsh/"/>
+      <category term="netsh" scheme="http://blog.wangchunjian.win/tags/netsh/"/>
     
   </entry>
   
   <entry>
     <title>使用composer搭建slim framework mvc demo</title>
-    <link href="http://nodejs.wxwztj.com/2016/07/28/%E4%BD%BF%E7%94%A8composer%E6%90%AD%E5%BB%BAmvc-demo/"/>
-    <id>http://nodejs.wxwztj.com/2016/07/28/使用composer搭建mvc-demo/</id>
+    <link href="http://blog.wangchunjian.win/2016/07/28/%E4%BD%BF%E7%94%A8composer%E6%90%AD%E5%BB%BAmvc-demo/"/>
+    <id>http://blog.wangchunjian.win/2016/07/28/使用composer搭建mvc-demo/</id>
     <published>2016-07-28T05:46:00.000Z</published>
     <updated>2016-07-28T05:58:46.589Z</updated>
     
@@ -439,19 +439,19 @@
     
     </summary>
     
-      <category term="slim" scheme="http://nodejs.wxwztj.com/categories/slim/"/>
+      <category term="slim" scheme="http://blog.wangchunjian.win/categories/slim/"/>
     
     
-      <category term="slim" scheme="http://nodejs.wxwztj.com/tags/slim/"/>
+      <category term="slim" scheme="http://blog.wangchunjian.win/tags/slim/"/>
     
-      <category term="composer" scheme="http://nodejs.wxwztj.com/tags/composer/"/>
+      <category term="composer" scheme="http://blog.wangchunjian.win/tags/composer/"/>
     
   </entry>
   
   <entry>
     <title>slimframwork 使用 middleware缓存页面</title>
-    <link href="http://nodejs.wxwztj.com/2016/07/27/hello-world/"/>
-    <id>http://nodejs.wxwztj.com/2016/07/27/hello-world/</id>
+    <link href="http://blog.wangchunjian.win/2016/07/27/hello-world/"/>
+    <id>http://blog.wangchunjian.win/2016/07/27/hello-world/</id>
     <published>2016-07-27T10:38:00.000Z</published>
     <updated>2016-09-16T07:32:08.501Z</updated>
     
@@ -473,19 +473,19 @@
     
     </summary>
     
-      <category term="slim" scheme="http://nodejs.wxwztj.com/categories/slim/"/>
+      <category term="slim" scheme="http://blog.wangchunjian.win/categories/slim/"/>
     
     
-      <category term="middleware" scheme="http://nodejs.wxwztj.com/tags/middleware/"/>
+      <category term="middleware" scheme="http://blog.wangchunjian.win/tags/middleware/"/>
     
-      <category term="slim" scheme="http://nodejs.wxwztj.com/tags/slim/"/>
+      <category term="slim" scheme="http://blog.wangchunjian.win/tags/slim/"/>
     
   </entry>
   
   <entry>
     <title>使用hexo搭建博客 nginx代理nodejs</title>
-    <link href="http://nodejs.wxwztj.com/2016/07/27/test-new-Post/"/>
-    <id>http://nodejs.wxwztj.com/2016/07/27/test-new-Post/</id>
+    <link href="http://blog.wangchunjian.win/2016/07/27/test-new-Post/"/>
+    <id>http://blog.wangchunjian.win/2016/07/27/test-new-Post/</id>
     <published>2016-07-27T10:05:00.000Z</published>
     <updated>2016-09-18T05:08:34.686Z</updated>
     
@@ -508,10 +508,10 @@
     
     </summary>
     
-      <category term="nodejs" scheme="http://nodejs.wxwztj.com/categories/nodejs/"/>
+      <category term="nodejs" scheme="http://blog.wangchunjian.win/categories/nodejs/"/>
     
     
-      <category term="hexo" scheme="http://nodejs.wxwztj.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://blog.wangchunjian.win/tags/hexo/"/>
     
   </entry>
   
