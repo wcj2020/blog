@@ -3,23 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用hexo搭建博客 nginx代理nodejs | 王纯建的博客</title>
+  <title>Label: netsh | 王纯建的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="假设hexo已经搭建完成,并且hexo server可以正常运行
-nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;server 127.0.0.1:4000;&amp;#125;   server &amp;#123;listen       80;server_name  blog.wangchunjian.win;location /">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用hexo搭建博客 nginx代理nodejs">
-<meta property="og:url" content="http://nodejs.wxwztj.com/2016/07/27/test-new-Post/index.html">
+  <meta name="description" content="使用hexo搭建的一个博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="王纯建的博客">
+<meta property="og:url" content="http://nodejs.wxwztj.com/tags/netsh/index.html">
 <meta property="og:site_name" content="王纯建的博客">
-<meta property="og:description" content="假设hexo已经搭建完成,并且hexo server可以正常运行
-nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;server 127.0.0.1:4000;&amp;#125;   server &amp;#123;listen       80;server_name  blog.wangchunjian.win;location /">
-<meta property="og:image" content="http://img.wxwztj.com/ckfinder/userfiles/files/nohup-hexo.jpg">
-<meta property="og:updated_time" content="2016-09-18T05:08:34.686Z">
+<meta property="og:description" content="使用hexo搭建的一个博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo搭建博客 nginx代理nodejs">
-<meta name="twitter:description" content="假设hexo已经搭建完成,并且hexo server可以正常运行
-nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;server 127.0.0.1:4000;&amp;#125;   server &amp;#123;listen       80;server_name  blog.wangchunjian.win;location /">
-<meta name="twitter:image" content="http://img.wxwztj.com/ckfinder/userfiles/files/nohup-hexo.jpg">
+<meta name="twitter:title" content="王纯建的博客">
+<meta name="twitter:description" content="使用hexo搭建的一个博客">
   
     <link rel="alternate" href="/atom.xml" title="王纯建的博客" type="application/atom+xml">
   
@@ -70,71 +64,39 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
 </header>
         
       <div class="outer">
-        <section id="main"><article id="post-test-new-Post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/07/27/test-new-Post/" class="article-date">
-  <time datetime="2016-07-27T10:05:00.000Z" itemprop="datePublished">2016-07-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/nodejs/">nodejs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      使用hexo搭建博客 nginx代理nodejs
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/08/19/局域网arp攻击解决方法/" class="archive-article-date">
+  <time datetime="2016-08-19T02:26:00.000Z" itemprop="datePublished">Aug 19</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/08/19/局域网arp攻击解决方法/">局域网arp攻击解决方法</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>假设hexo已经搭建完成,并且<code>hexo server</code>可以正常运行</p>
-<p>nginx下站点配置文件<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">upstream</span> node_app &#123;</div><div class="line"><span class="attribute">server</span> <span class="number">127.0.0.1:4000</span>;</div><div class="line">&#125;</div><div class="line">   </div><div class="line"><span class="section">server</span> &#123;</div><div class="line"><span class="attribute">listen</span>       <span class="number">80</span>;</div><div class="line"><span class="attribute">server_name</span>  blog.wangchunjian.win;</div><div class="line"></div><div class="line"><span class="attribute">location</span> / &#123;</div><div class="line">  <span class="attribute">proxy_pass</span> http://node_app;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="attribute">location</span> <span class="regexp">~* .(gif|jpg|jpeg|png|css|js|ico)$</span> &#123;</div><div class="line">  <span class="attribute">root</span> /www/web/nodejs/test/public;</div><div class="line">  <span class="attribute">expires</span> <span class="number">1h</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>使用<code>nohup</code>后台运行<code>hexo</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup hexo server &amp;</div></pre></td></tr></table></figure></p>
-<p><img src="http://img.wxwztj.com/ckfinder/userfiles/files/nohup-hexo.jpg" alt="nohup command" title="nohup command"></p>
-<blockquote>
-<p>必须使用<code>exit</code>退出,不然nohup的session会中断</p>
-</blockquote>
-<p>安装<code>hexo_admin</code>后会发现无法加载css 和 js ,但是访问4000端口是可以加载的,所以手动把缺的文件拷贝了一份到 public/admin文件夹下。源文件在<code>/www/web/nodejs/test/node_modules/hexo-admin/www</code>下。</p>
-<p>使用nginx加载静态资源会快一些，还可以设置缓存时间。。。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/07/27/test-new-Post/" data-id="cit9ffy6s00026x6ncvh6q8nm" class="article-share-link">Delen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/07/27/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
-      <div class="article-nav-title">
-        
-          slimframwork 使用 middleware缓存页面
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
         

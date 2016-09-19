@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World! | 王纯建的博客</title>
+  <title>slimframwork 使用 middleware缓存页面 | 王纯建的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="中间件 Core\Middleware\Cache">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World!">
+<meta property="og:title" content="slimframwork 使用 middleware缓存页面">
 <meta property="og:url" content="http://nodejs.wxwztj.com/2016/07/27/hello-world/index.html">
 <meta property="og:site_name" content="王纯建的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta property="og:updated_time" content="2016-07-27T13:06:23.113Z">
+<meta property="og:description" content="中间件 Core\Middleware\Cache">
+<meta property="og:image" content="http://www2.wxwztj.com/uploads/1607/20160721162022_546.jpg">
+<meta property="og:updated_time" content="2016-09-16T07:32:08.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World!">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="slimframwork 使用 middleware缓存页面">
+<meta name="twitter:description" content="中间件 Core\Middleware\Cache">
+<meta name="twitter:image" content="http://www2.wxwztj.com/uploads/1607/20160721162022_546.jpg">
   
     <link rel="alternate" href="/atom.xml" title="王纯建的博客" type="application/atom+xml">
   
@@ -68,9 +70,13 @@
         <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/07/27/hello-world/" class="article-date">
-  <time datetime="2016-07-27T10:38:34.000Z" itemprop="datePublished">2016-07-27</time>
+  <time datetime="2016-07-27T10:38:00.000Z" itemprop="datePublished">2016-07-27</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/slim/">slim</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -79,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World!
+      slimframwork 使用 middleware缓存页面
     </h1>
   
 
@@ -87,31 +93,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p><img src="http://www2.wxwztj.com/uploads/1607/20160721162022_546.jpg" alt="slim cache middleware" title="slim cache middleware"></p>
+<p>中间件 <code>Core\Middleware\Cache</code></p>
+<a id="more"></a>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">namespace Core\Middleware;</div><div class="line">class Cache</div><div class="line">&#123;</div><div class="line">    protected $db;</div><div class="line">    //Constructor</div><div class="line">    public function __construct($db) &#123;</div><div class="line">       $this-&gt;db = $db;</div><div class="line">    &#125;</div><div class="line">    /**</div><div class="line">     * Example middleware invokable class</div><div class="line">     *</div><div class="line">     * @param  \Psr\Http\Message\ServerRequestInterface $request  PSR7 request</div><div class="line">     * @param  \Psr\Http\Message\ResponseInterface      $response PSR7 response</div><div class="line">     * @param  callable                                 $next     Next middleware</div><div class="line">     *</div><div class="line">     * @return \Psr\Http\Message\ResponseInterface</div><div class="line">     */</div><div class="line">    public function __invoke($request, $response, $next)</div><div class="line">    &#123;</div><div class="line">        $path = $request-&gt;getUri()-&gt;getPath();</div><div class="line">        $query= $request-&gt;getUri()-&gt;getQuery();</div><div class="line">        if(!empty($query))&#123;</div><div class="line">            $path.='?'.$query;</div><div class="line">        &#125;</div><div class="line">        $cachetime=time()-60; //获取60s内的缓存</div><div class="line">        $cache=$this-&gt;db-&gt;get('cache','*',['AND'=&gt;['path'=&gt;$path,'created_at[&gt;]'=&gt;$cachetime]]);</div><div class="line">        if($cache)&#123;</div><div class="line">             $t2=microtime(true);</div><div class="line">             $response-&gt;getBody()-&gt;write(htmlspecialchars_decode($cache['body']).</div><div class="line">             '&lt;!--cached at'.date("Y/m/d H:i:s",$cache['created_at']).'--&gt;</div><div class="line">             &lt;!--app cost time '.(round(($t2-APP_START),5)*1000).'ms--&gt;');</div><div class="line">             return $response;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $response = $next($request, $response);</div><div class="line"></div><div class="line">        if ($response-&gt;getStatusCode() == 200) &#123;</div><div class="line">            $id=$this-&gt;db-&gt;get('cache','id',['path'=&gt;$path]);</div><div class="line">            $cachebody=htmlspecialchars($response-&gt;getBody());</div><div class="line">            $data=['path'=&gt;$path,'body'=&gt;$cachebody,'created_at'=&gt;time()];</div><div class="line">            if($id)&#123;</div><div class="line">                $this-&gt;db-&gt;update('cache',$data,['id'=&gt;$id]);</div><div class="line">            &#125;else&#123;</div><div class="line">                $this-&gt;db-&gt;insert('cache',$data);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        $t2=microtime(true);</div><div class="line">        $response-&gt;getBody()-&gt;write('&lt;!--no cache app cost time '</div><div class="line">        .(round(($t2-APP_START),5)*1000).'ms--&gt;');</div><div class="line">        return $response;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###入口文件index.php调用<code>cache</code>缓存中间件<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">define(<span class="string">'APP_START'</span>,microtime(<span class="keyword">true</span>));</div><div class="line"><span class="keyword">require</span> <span class="string">'../vendor/autoload.php'</span>;</div><div class="line">$app = <span class="keyword">new</span> Slim\App(</div><div class="line">    <span class="keyword">new</span> \Slim\Container(</div><div class="line">        <span class="keyword">include</span> <span class="string">'../core/container.config.php'</span></div><div class="line">    )</div><div class="line">);</div><div class="line">$app-&gt;group(<span class="string">'/blog'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;get(<span class="string">'[/&#123;slug&#125;]'</span>, <span class="string">'BlogController'</span>)-&gt;setName(<span class="string">'blog'</span>);</div><div class="line">    <span class="keyword">$this</span>-&gt;get(<span class="string">'/article/&#123;id:[0-9]+&#125;'</span>, <span class="string">'BlogController:article'</span>)-&gt;setName(<span class="string">'blog.post'</span>);</div><div class="line">&#125;)-&gt;add(<span class="keyword">new</span> Core\Middleware\Cache());</div></pre></td></tr></table></figure></p>
+<p>###缓存的话,建议使用redis,memcache 下面是使用memcache来缓存的代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line"><span class="keyword">namespace</span> <span class="title">Core</span>\<span class="title">Middleware</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cache</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Example middleware invokable class</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span>  \Psr\Http\Message\ServerRequestInterface $request  PSR7 request</div><div class="line">     * <span class="doctag">@param</span>  \Psr\Http\Message\ResponseInterface      $response PSR7 response</div><div class="line">     * <span class="doctag">@param</span>  callable                                 $next     Next middleware</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> \Psr\Http\Message\ResponseInterface</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span><span class="params">($request, $response, $next)</span></span></div><div class="line">    &#123;</div><div class="line">        $path = $request-&gt;getUri()-&gt;getPath();</div><div class="line">        $query= $request-&gt;getUri()-&gt;getQuery();</div><div class="line">        <span class="keyword">if</span>(!<span class="keyword">empty</span>($query))&#123;</div><div class="line">            $path.=<span class="string">'?'</span>.$query;</div><div class="line">        &#125;</div><div class="line">        $memcache_obj = memcache_connect(<span class="string">"127.0.0.1"</span>, <span class="number">11211</span>);</div><div class="line">        $cache=$memcache_obj-&gt;get($path);</div><div class="line">        <span class="keyword">if</span>($cache)&#123;</div><div class="line">             $t2=microtime(<span class="keyword">true</span>);</div><div class="line">             $response-&gt;getBody()-&gt;write(htmlspecialchars_decode($cache));</div><div class="line">             <span class="keyword">return</span> $response;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $response = $next($request, $response);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> ($response-&gt;getStatusCode() == <span class="number">200</span>) &#123;</div><div class="line"></div><div class="line">            $cachebody=htmlspecialchars($response-&gt;getBody());</div><div class="line">            $memcache_obj-&gt;set($path,$cachebody,<span class="keyword">false</span>,<span class="number">60</span>);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        $t2=microtime(<span class="keyword">true</span>);</div><div class="line">        $response-&gt;getBody()-&gt;write(<span class="string">'&lt;!--with no memcache app cost time </span></div><div class="line">        '.(round(($t2-APP_START),<span class="number">5</span>)*<span class="number">1000</span>).<span class="string">'ms--&gt;'</span>);</div><div class="line">        <span class="keyword">return</span> $response;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>没怎么使用过<code>memcache</code>,不过看说明是使用connect连接的,程序执行完,连接会自动关闭.</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/07/27/hello-world/" data-id="cir5os3kt0000bx6n2varsp9f" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/07/27/hello-world/" data-id="cit9ffy7900056x6n39p97a2h" class="article-share-link">Delen</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/middleware/">middleware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slim/">slim</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
+    <a href="/2016/07/28/使用composer搭建mvc-demo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          使用composer搭建slim framework mvc demo
+        
+      </div>
+    </a>
+  
   
     <a href="/2016/07/27/test-new-Post/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">使用hexo搭建博客 nginx代理nodejs</div>
     </a>
   
@@ -126,9 +143,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Categorieën</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li></ul>
     </div>
   </div>
 
@@ -136,9 +153,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li></ul>
     </div>
   </div>
 
@@ -148,16 +165,16 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
     </div>
   </div>
 
@@ -165,16 +182,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2016/07/27/hello-world/">Hello World!</a>
+            <a href="/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/">鼠标滚动mousewheel和touch滑动全屏切换效果</a>
           </li>
         
           <li>
-            <a href="/2016/07/27/test-new-Post/">使用hexo搭建博客 nginx代理nodejs</a>
+            <a href="/2016/09/16/浅谈CSS3-Filter的10种特效/">CSS3 Filter的特效</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/16/Parallux-响应式网页视差效果/">Parallux-响应式网页视差效果</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/16/python-网易公开课教程分享/">python 网易(MIT)公开课教程分享</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/14/http协议何时开启keep-alive/">http协议何时开启keep-alive(转)</a>
           </li>
         
       </ul>

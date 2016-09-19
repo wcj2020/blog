@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Parallux-响应式网页视差效果 | 王纯建的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Parallax.js示例：
+
+Parallux-响应式网页滚动视觉差特效 &amp;amp; CSS图片filter的blur模糊和灰色gray 
+纯css3实现视觉差效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Parallux-响应式网页视差效果">
+<meta property="og:url" content="http://nodejs.wxwztj.com/2016/09/16/Parallux-响应式网页视差效果/index.html">
+<meta property="og:site_name" content="王纯建的博客">
+<meta property="og:description" content="Parallax.js示例：
+
+Parallux-响应式网页滚动视觉差特效 &amp;amp; CSS图片filter的blur模糊和灰色gray 
+纯css3实现视觉差效果">
+<meta property="og:updated_time" content="2016-09-18T05:08:05.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Parallux-响应式网页视差效果">
+<meta name="twitter:description" content="Parallax.js示例：
+
+Parallux-响应式网页滚动视觉差特效 &amp;amp; CSS图片filter的blur模糊和灰色gray 
+纯css3实现视觉差效果">
+  
+    <link rel="alternate" href="/atom.xml" title="王纯建的博客" type="application/atom+xml">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+        
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">王纯建的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">hexo搭建</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://nodejs.wxwztj.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+        
+      <div class="outer">
+        <section id="main"><article id="post-Parallux-响应式网页视差效果" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/16/Parallux-响应式网页视差效果/" class="article-date">
+  <time datetime="2016-09-16T07:10:34.000Z" itemprop="datePublished">2016-09-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Parallux-响应式网页视差效果
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Parallax-js"><a href="#Parallax-js" class="headerlink" title="Parallax.js"></a>Parallax.js</h1><p>示例：</p>
+<ul>
+<li><a href="http://blog.wangchunjian.win/2016/2/" target="_blank" rel="external">Parallux-响应式网页滚动视觉差特效 &amp; CSS图片filter的blur模糊和灰色gray</a> </li>
+<li><a href="http://blog.wangchunjian.win/2016/1/" target="_blank" rel="external">纯css3实现视觉差效果</a><a id="more"></a>
+</li>
+</ul>
+<p>Parallax Engine that reacts to the orientation of a smart device. Where no gyroscope or motion detection hardware is available, the position of the cursor is used instead.</p>
+<p>Check out this <strong><a href="http://wagerfield.github.com/parallax/" target="_blank" rel="external">demo</a></strong> to see it in action!</p>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>Create a list of elements giving each item that you want to move within your parallax scene a class of <code>layer</code> and a <code>data-depth</code> attribute specifying its depth within the scene. A depth of <strong>0</strong> will cause the layer to remain stationary, and a depth of <strong>1</strong> will cause the layer to move by the total effect of the calculated motion. Values inbetween <strong>0</strong> and <strong>1</strong> will cause the layer to move by an amount relative to the supplied ratio.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"scene"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.00"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"layer1.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.20"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"layer2.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.40"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"layer3.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.60"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"layer4.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.80"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"layer5.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"1.00"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"layer6.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>To kickoff a <strong>Parallax</strong> scene, select your parent DOM Element and pass it to the <strong>Parallax</strong> constructor.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scene = <span class="built_in">document</span>.getElementById(<span class="string">'scene'</span>);</div><div class="line"><span class="keyword">var</span> parallax = <span class="keyword">new</span> Parallax(scene);</div></pre></td></tr></table></figure>
+<h2 id="Understanding-Layer-Motion-Calculations"><a href="#Understanding-Layer-Motion-Calculations" class="headerlink" title="Understanding Layer Motion Calculations"></a>Understanding Layer Motion Calculations</h2><p>The amount of motion that each layer moves by depends on 3 contributing factors:</p>
+<ol>
+<li>The <code>scalarX</code> and <code>scalarY</code> values (see <a href="#behaviours">Behaviours</a> below for configuration)</li>
+<li>The dimensions of the parent DOM element</li>
+<li>The <code>depth</code> of a layer within a parallax scene (specified by it’s <code>data-depth</code> attribute)</li>
+</ol>
+<p>The calculation for this motion is as follows:</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xMotion = parentElement.width  * (scalarX / <span class="number">100</span>) * layerDepth</div><div class="line">yMotion = parentElement.height * (scalarY / <span class="number">100</span>) * layerDepth</div></pre></td></tr></table></figure>
+<p>So for a layer with a <code>data-depth</code> value of <code>0.5</code> within a scene that has both the <code>scalarX</code> and <code>scalarY</code> values set to <code>10</code> ( <em>the default</em> ) where the containing scene element is <code>1000px x 1000px</code>, the total motion of the layer in both <code>x</code> and <code>y</code> would be:</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xMotion = <span class="number">1000</span> * (<span class="number">10</span> / <span class="number">100</span>) * <span class="number">0.5</span> = <span class="number">50</span> <span class="comment"># 50px of positive and negative motion in x</span></div><div class="line">yMotion = <span class="number">1000</span> * (<span class="number">10</span> / <span class="number">100</span>) * <span class="number">0.5</span> = <span class="number">50</span> <span class="comment"># 50px of positive and negative motion in y</span></div></pre></td></tr></table></figure>
+<h2 id="Behaviours"><a href="#Behaviours" class="headerlink" title="Behaviours"></a>Behaviours</h2><p>There are a number of behaviours that you can setup for any given <strong>Parallax</strong> instance. These behaviours can either be specified in the markup via data attributes or in JavaScript via the constructor and API.</p>
+<table>
+<thead>
+<tr>
+<th>Behaviour</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>relativeInput</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td>Specifies whether or not to use the coordinate system of the <code>element</code> passed to the parallax <code>constructor</code>. <strong>Mouse input only.</strong></td>
+</tr>
+<tr>
+<td><code>clipRelativeInput</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td>Specifies whether or not to clip the mouse input to the bounds of the <code>element</code> passed to the parallax <code>constructor</code>. <strong>Mouse input only.</strong></td>
+</tr>
+<tr>
+<td><code>calibrate-x</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td>Specifies whether or not to cache &amp; calculate the motion relative to the initial <code>x</code> axis value on initialisation.</td>
+</tr>
+<tr>
+<td><code>calibrate-y</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td>Specifies whether or not to cache &amp; calculate the motion relative to the initial <code>y</code> axis value on initialisation.</td>
+</tr>
+<tr>
+<td><code>invert-x</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td><code>true</code> moves layers in opposition to the device motion, <code>false</code> slides them away.</td>
+</tr>
+<tr>
+<td><code>invert-y</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td><code>true</code> moves layers in opposition to the device motion, <code>false</code> slides them away.</td>
+</tr>
+<tr>
+<td><code>limit-x</code></td>
+<td><code>number</code> or <code>false</code></td>
+<td>A numeric value limits the total range of motion in <code>x</code>, <code>false</code> allows layers to move with complete freedom.</td>
+</tr>
+<tr>
+<td><code>limit-y</code></td>
+<td><code>number</code> or <code>false</code></td>
+<td>A numeric value limits the total range of motion in <code>y</code>, <code>false</code> allows layers to move with complete freedom.</td>
+</tr>
+<tr>
+<td><code>scalar-x</code></td>
+<td><code>number</code></td>
+<td>Multiplies the input motion by this value, increasing or decreasing the sensitivity of the layer motion.</td>
+</tr>
+<tr>
+<td><code>scalar-y</code></td>
+<td><code>number</code></td>
+<td>Multiplies the input motion by this value, increasing or decreasing the sensitivity of the layer motion.</td>
+</tr>
+<tr>
+<td><code>friction-x</code></td>
+<td><code>number</code> <code>0 - 1</code></td>
+<td>The amount of friction the layers experience. This essentially adds some easing to the layer motion.</td>
+</tr>
+<tr>
+<td><code>friction-y</code></td>
+<td><code>number</code> <code>0 - 1</code></td>
+<td>The amount of friction the layers experience. This essentially adds some easing to the layer motion.</td>
+</tr>
+<tr>
+<td><code>origin-x</code></td>
+<td><code>number</code></td>
+<td>The <code>x</code> origin of the mouse input. Defaults to 0.5 (the center). <code>0</code> moves the origin to the left edge, <code>1</code> to the right edge. <strong>Mouse input only.</strong></td>
+</tr>
+<tr>
+<td><code>origin-y</code></td>
+<td><code>number</code></td>
+<td>The <code>y</code> origin of the mouse input. Defaults to 0.5 (the center). <code>0</code> moves the origin to the top edge, <code>1</code> to the bottom edge. <strong>Mouse input only.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the behaviours described above, there are <strong>two</strong> methods <code>enable()</code> and <code>disable()</code> that <em>activate</em> and <em>deactivate</em> the <strong>Parallax</strong> instance respectively.</p>
+<h3 id="Behaviours-Data-Attributes-Example"><a href="#Behaviours-Data-Attributes-Example" class="headerlink" title="Behaviours: Data Attributes Example"></a>Behaviours: Data Attributes Example</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"scene"</span></span></div><div class="line">  <span class="attr">data-calibrate-x</span>=<span class="string">"false"</span></div><div class="line">  <span class="attr">data-calibrate-y</span>=<span class="string">"true"</span></div><div class="line">  <span class="attr">data-invert-x</span>=<span class="string">"false"</span></div><div class="line">  <span class="attr">data-invert-y</span>=<span class="string">"true"</span></div><div class="line">  <span class="attr">data-limit-x</span>=<span class="string">"false"</span></div><div class="line">  <span class="attr">data-limit-y</span>=<span class="string">"10"</span></div><div class="line">  <span class="attr">data-scalar-x</span>=<span class="string">"2"</span></div><div class="line">  <span class="attr">data-scalar-y</span>=<span class="string">"8"</span></div><div class="line">  <span class="attr">data-friction-x</span>=<span class="string">"0.2"</span></div><div class="line">  <span class="attr">data-friction-y</span>=<span class="string">"0.8"</span></div><div class="line">  <span class="attr">data-origin-x</span>=<span class="string">"0.0"</span></div><div class="line">  <span class="attr">data-origin-y</span>=<span class="string">"1.0"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.00"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"graphics/layer1.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.20"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"graphics/layer2.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.40"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"graphics/layer3.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.60"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"graphics/layer4.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"0.80"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"graphics/layer5.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"layer"</span> <span class="attr">data-depth</span>=<span class="string">"1.00"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"graphics/layer6.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Behaviours-Constructor-Object-Example"><a href="#Behaviours-Constructor-Object-Example" class="headerlink" title="Behaviours: Constructor Object Example"></a>Behaviours: Constructor Object Example</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scene = <span class="built_in">document</span>.getElementById(<span class="string">'scene'</span>);</div><div class="line"><span class="keyword">var</span> parallax = <span class="keyword">new</span> Parallax(scene, &#123;</div><div class="line">  calibrateX: <span class="literal">false</span>,</div><div class="line">  calibrateY: <span class="literal">true</span>,</div><div class="line">  invertX: <span class="literal">false</span>,</div><div class="line">  invertY: <span class="literal">true</span>,</div><div class="line">  limitX: <span class="literal">false</span>,</div><div class="line">  limitY: <span class="number">10</span>,</div><div class="line">  scalarX: <span class="number">2</span>,</div><div class="line">  scalarY: <span class="number">8</span>,</div><div class="line">  frictionX: <span class="number">0.2</span>,</div><div class="line">  frictionY: <span class="number">0.8</span>,</div><div class="line">  originX: <span class="number">0.0</span>,</div><div class="line">  originY: <span class="number">1.0</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="Behaviours-API-Example"><a href="#Behaviours-API-Example" class="headerlink" title="Behaviours: API Example"></a>Behaviours: API Example</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scene = <span class="built_in">document</span>.getElementById(<span class="string">'scene'</span>);</div><div class="line"><span class="keyword">var</span> parallax = <span class="keyword">new</span> Parallax(scene);</div><div class="line">parallax.enable();</div><div class="line">parallax.disable();</div><div class="line">parallax.updateLayers(); <span class="comment">// Useful for reparsing the layers in your scene if you change their data-depth value</span></div><div class="line">parallax.calibrate(<span class="literal">false</span>, <span class="literal">true</span>);</div><div class="line">parallax.invert(<span class="literal">false</span>, <span class="literal">true</span>);</div><div class="line">parallax.limit(<span class="literal">false</span>, <span class="number">10</span>);</div><div class="line">parallax.scalar(<span class="number">2</span>, <span class="number">8</span>);</div><div class="line">parallax.friction(<span class="number">0.2</span>, <span class="number">0.8</span>);</div><div class="line">parallax.origin(<span class="number">0.0</span>, <span class="number">1.0</span>);</div></pre></td></tr></table></figure>
+<h2 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h2><p>If you’re using <strong><a href="http://jquery.com/" target="_blank" rel="external">jQuery</a></strong> or <strong><a href="http://zeptojs.com/" target="_blank" rel="external">Zepto</a></strong> and would prefer to<br>use <strong>Parallax.js</strong> as a plugin, you’re in luck!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#scene'</span>).parallax();</div></pre></td></tr></table></figure>
+<h3 id="jQuery-Passing-Options"><a href="#jQuery-Passing-Options" class="headerlink" title="jQuery: Passing Options"></a>jQuery: Passing Options</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#scene'</span>).parallax(&#123;</div><div class="line">  calibrateX: <span class="literal">false</span>,</div><div class="line">  calibrateY: <span class="literal">true</span>,</div><div class="line">  invertX: <span class="literal">false</span>,</div><div class="line">  invertY: <span class="literal">true</span>,</div><div class="line">  limitX: <span class="literal">false</span>,</div><div class="line">  limitY: <span class="number">10</span>,</div><div class="line">  scalarX: <span class="number">2</span>,</div><div class="line">  scalarY: <span class="number">8</span>,</div><div class="line">  frictionX: <span class="number">0.2</span>,</div><div class="line">  frictionY: <span class="number">0.8</span>,</div><div class="line">  originX: <span class="number">0.0</span>,</div><div class="line">  originY: <span class="number">1.0</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="jQuery-API"><a href="#jQuery-API" class="headerlink" title="jQuery: API"></a>jQuery: API</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $scene = $(<span class="string">'#scene'</span>).parallax();</div><div class="line">$scene.parallax(<span class="string">'enable'</span>);</div><div class="line">$scene.parallax(<span class="string">'disable'</span>);</div><div class="line">$scene.parallax(<span class="string">'updateLayers'</span>);</div><div class="line">$scene.parallax(<span class="string">'calibrate'</span>, <span class="literal">false</span>, <span class="literal">true</span>);</div><div class="line">$scene.parallax(<span class="string">'invert'</span>, <span class="literal">false</span>, <span class="literal">true</span>);</div><div class="line">$scene.parallax(<span class="string">'limit'</span>, <span class="literal">false</span>, <span class="number">10</span>);</div><div class="line">$scene.parallax(<span class="string">'scalar'</span>, <span class="number">2</span>, <span class="number">8</span>);</div><div class="line">$scene.parallax(<span class="string">'friction'</span>, <span class="number">0.2</span>, <span class="number">0.8</span>);</div><div class="line">$scene.parallax(<span class="string">'origin'</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</div></pre></td></tr></table></figure>
+<h2 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h2><p>If you are writing a <strong>native iOS application</strong> and would like to use <strong>parallax.js</strong> within a <code>UIWebView</code>, you will need to do a little bit of work to get it running.</p>
+<p><code>UIWebView</code> no longer automatically receives the <code>deviceorientation</code> event, so your native application must intercept the events from the gyroscope and reroute them to the <code>UIWebView</code>:</p>
+<ol>
+<li>Include the <strong>CoreMotion</strong> framework <code>#import &lt;CoreMotion/CoreMotion.h&gt;</code> and create a reference to the <strong>UIWebView</strong> <code>@property(nonatomic, strong) IBOutlet UIWebView *parallaxWebView;</code></li>
+<li>Add a property to the app delegate (or controller that will own the <strong>UIWebView</strong>) <code>@property(nonatomic, strong) CMMotionManager *motionManager;</code></li>
+<li>Finally, make the following calls:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">self.motionManager = [[CMMotionManager alloc] init];</div><div class="line">if (self.motionManager.isGyroAvailable &amp;&amp; !self.motionManager.isGyroActive) &#123;</div><div class="line">  [self.motionManager setGyroUpdateInterval:0.5f]; // Set the event update frequency (in seconds)</div><div class="line">  [self.motionManager startGyroUpdatesToQueue:NSOperationQueue.mainQueue</div><div class="line">                                  withHandler:^(CMGyroData *gyroData, NSError *error) &#123;</div><div class="line">    NSString *js = [NSString stringWithFormat:@&quot;parallax.onDeviceOrientation(&#123;beta:%f, gamma:%f&#125;)&quot;, gyroData.rotationRate.x, gyroData.rotationRate.y];</div><div class="line">    [self.parallaxWebView stringByEvaluatingJavaScriptFromString:js];</div><div class="line">  &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h2><blockquote>
+<p>As a prerequisite, you will need <a href="http://gulpjs.com/" target="_blank" rel="external">gulp</a> installed: <code>npm install -g gulp</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install</div><div class="line">gulp</div></pre></td></tr></table></figure>
+<p>During development you can have gulp watch the <code>source</code> directory for changes and automatically build the <code>deploy</code> files by running:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp watch</div></pre></td></tr></table></figure>
+<h2 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h2><p>Matthew Wagerfield: <a href="http://twitter.com/wagerfield" target="_blank" rel="external">@wagerfield</a></p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>Licensed under <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank" rel="external">MIT</a>. Enjoy.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2016/09/16/Parallux-响应式网页视差效果/" data-id="cit9ffy6f00006x6n879n07rc" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/16/浅谈CSS3-Filter的10种特效/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          CSS3 Filter的特效
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/16/python-网易公开课教程分享/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">python 网易(MIT)公开课教程分享</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/">鼠标滚动mousewheel和touch滑动全屏切换效果</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/16/浅谈CSS3-Filter的10种特效/">CSS3 Filter的特效</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/16/Parallux-响应式网页视差效果/">Parallux-响应式网页视差效果</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/16/python-网易公开课教程分享/">python 网易(MIT)公开课教程分享</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/14/http协议何时开启keep-alive/">http协议何时开启keep-alive(转)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 wcj2020<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/1.10.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+        
+  </div>
+</body>
+</html>
