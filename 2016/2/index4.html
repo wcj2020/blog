@@ -1,0 +1,251 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Parallux-响应式网页滚动视觉差特效|DEMO2_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<script type="text/javascript" src="dist/custom.modernizr.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<link rel="stylesheet" href="dist/normalize.min.css">
+	<link rel="stylesheet" href="dist/jquery.parallux.min.css">
+	<link rel="stylesheet" href="css/demo.css">
+	<link rel="stylesheet" href="css/demo2.css">
+	<!--[if IE]>
+		<script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	
+<!-- 		<header class="htmleaf-header">
+			<h1>Parallux-响应式网页滚动视觉差特效 <span>Responsive Any Content Parallax Plugin With jQuery</span></h1>
+			<div class="htmleaf-demo center">
+			  <a href="index.html">DEMO1</a>
+			  <a href="index2.html" class="current">DEMO2</a>
+			  <a href="index3.html">DEMO3</a>
+			</div>
+		</header> -->
+
+<style type="text/css">
+html,body{overflow:hidden;}
+.sidenav {
+  position:fixed;
+  _position:absolute;
+  top:50%;
+  right:35px;
+  -webkit-transform:translateY(-50%);
+  -ms-transform:translateY(-50%);
+  -moz-transform:translateY(-50%);
+  transform:translateY(-50%);
+  z-index:9999;
+  +width:20px
+}
+.htmleaf-container{position:absolute;top:0;left:0;width:100%;}
+.parallux{
+	width:100%;
+	-webkit-transition: height 2s ease-in-out;
+    -moz-transition: height 2s ease-in-out;
+    -o-transition: height 2s ease-in-out;
+    transition: height 2s ease-in-out;
+}
+.parallux img{width:100%;height:100%;}
+.sidenav li {
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background-color:#575374;
+  margin-bottom:15px;
+  cursor:pointer;
+  list-style:none;
+  *font-size:0;
+  *line-height:0
+}
+.sidenav .active {
+  background-color:#FFF;
+  width:10px;
+  height:10px;
+  right:3px;
+  position:relative
+}
+#section-0{background:url(img/1.jpg);background-size: cover;}
+#section-1{background:url(img/2.jpg);background-size: cover;}
+#section-2{background:url(img/3.jpg);background-size: cover;}
+
+.next-page{position:fixed;bottom:0;height:60px;width:100%;z-index:111;background:#EEE;opacity:.3;margin:0;}
+.next-page a{display:block;width:100%;line-height:60px;text-align:center;height:60px;}
+</style>
+<nav id="sidenav" class="sidenav">
+<ul class="list-unstyled">
+  <li class="active" data-num="0"></li>
+  <li class="" data-num="1"></li>
+  <li class="" data-num="2"></li>
+</ul>
+</nav>
+
+	<div class="htmleaf-container">
+		<!-- Parallax item -->
+		<div class="parallux" id="section-0">
+
+
+			
+		</div>
+
+		<!-- Parallax Item -->
+		<div class="parallux" id="section-1">
+
+	
+
+
+			<!-- Parallax foreground with the same size and transparent -->
+
+		</div>
+		
+		<!-- Parallax Item -->
+		<div class="parallux" id="section-2">
+
+			
+
+
+		</div>
+
+
+	<p class="next-page" data-scroll='stop'><a href="javascript:;">mousewhell</a></p>	
+	</div>
+	
+	<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+ <!--[if IE]>
+    <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <![endif]-->	
+	<script>
+var len=$('.htmleaf-container .parallux').length;
+
+
+$('.htmleaf-container .parallux').css({"height":100/len+"%"});
+
+$('.htmleaf-container').css({"height":"300%"})
+$("#sidenav ul li").on("click",function(){
+	var oldindex=$("#sidenav ul li.active").index(); //
+	$(this).addClass('active').siblings().removeClass('active');	
+	var len=$('.htmleaf-container .parallux').length;
+	var newindex=$(this).index();
+	$('.htmleaf-container').animate({"top":"-"+100*newindex+"%"},1000);
+});
+$(".next-page a").on('click touchend',function(){
+	scrollpage('down');	
+});
+
+
+function scrollpage(direction){
+	var status=$('.next-page').attr('data-scroll');
+    if(status==='start'){
+    	console.log('already scrollpageing...');    	
+    }else{
+    	$('.next-page').attr('data-scroll','start');
+		var oldindex=$("#sidenav ul li.active").index(); 
+		var len=$('.htmleaf-container .parallux').length-1;
+		if(direction==='down'){		
+			if(oldindex<len){
+				oldindex++;
+				$("#sidenav ul li").eq(oldindex).addClass('active').siblings().removeClass('active');
+				$('.htmleaf-container').animate({"top":"-"+100*oldindex+"%"},1000);
+			}else{
+				
+			}
+		}else{
+			if(oldindex>0){
+				oldindex--;
+				$("#sidenav ul li").eq(oldindex).addClass('active').siblings().removeClass('active');
+				$('.htmleaf-container').animate({"top":"-"+100*oldindex+"%"},1000);
+			}else{
+				
+			}
+		}
+		setTimeout("$('.next-page').attr('data-scroll','stop')",1100);	
+    }
+    console.log(direction+status);
+}
+
+$(document).on("mousewheel DOMMouseScroll", function (e) {  
+
+	var status=$('.next-page').attr('data-scroll');
+	if(status==='stop'){
+		var delta = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) ||  // chrome & ie
+                (e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1));              // firefox
+	    if (delta > 0) {
+	        // 向上滚        
+	        scrollpage('up');  	
+	        console.log("wheelup");
+	    } else if (delta < 0) {
+	        // 向下滚
+	        scrollpage('down')
+	        console.log("wheeldown");
+	    } 
+	}
+    
+});
+
+
+
+
+(function(window,document){
+    var app = {
+        init:function(){
+           document.addEventListener('DOMContentLoaded',function(){
+               app.bindTouchEvent(); //绑定触摸事件
+           }.bind(app),false);
+        }(),
+
+        /**
+         * 绑定触摸事件
+         */
+        bindTouchEvent:function(){
+           var startX,startY;
+           var moveLength = 0;  // 手指当前滑动的距离
+           var direction = "left"; //滑动的方向
+           var isMove = false; //是否发生滑动
+           var startT = 0; //记录手指按下去的时间
+
+           /*手指放在屏幕上*/
+           document.addEventListener("touchstart",function(e){
+               e.preventDefault();
+               var touch = e.touches[0];
+               startX = touch.pageX;
+               startY = touch.pageY;
+               startT = new Date().getTime(); //记录手指按下的开始时间
+               isMove = false; //是否产生滑动
+           }.bind(this),false);
+
+           /*手指在屏幕上滑动，页面跟随手指移动*/
+           document.addEventListener("touchmove",function(e){
+               e.preventDefault();
+               var touch = e.touches[0];
+               var deltaX = touch.pageX - startX;
+               var deltaY = touch.pageY - startY;
+               //如果X方向上的位移大于Y方向，则认为是左右滑动
+               if (Math.abs(deltaX) > Math.abs(deltaY)){
+                   moveLength = deltaX;
+                   direction = deltaX>0?"right":"left"; //判断手指滑动的方向
+               }else{
+               	   moveLength = deltaY;
+               	   direction = deltaY>0?"up":"down"; //判断手指滑动的方向
+               	   isMove=true;
+               }
+           }.bind(this),false);
+
+           /*手指离开屏幕时，计算最终需要停留在哪一页*/
+           document.addEventListener("touchend",function(e){
+               e.preventDefault();
+               var translate = 0;
+               //计算手指在屏幕上停留的时间
+               var deltaT = new Date().getTime() - startT;
+               if (isMove){ //发生了左右滑动
+                  scrollpage(direction);                    
+               }
+           }.bind(this),false);
+       }
+    }
+})(window,document);
+	</script>
+</body>
+</html>

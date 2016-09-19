@@ -626,10 +626,33 @@ a.article-title:hover {
 }
 .article-entry blockquote {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4em;
-  margin: 1.6em 20px;
-  text-align: center;
-}
+  font-size: 1.2em;
+	    padding: .625rem 1.825rem .625rem 2.5rem;
+	    border: 1px #ccc dashed;
+	    position: relative;
+	    margin: 0 0 .625rem 0;
+	    background-color: #ffffff;
+	}
+	.article-entry blockquote::before {
+	    position: absolute;
+	    content: 'INFO';
+	    text-transform: lowercase;
+	    left: 1.5rem;
+	    top: 11.875rem;
+	    color: gray;
+	    display: block;
+	    font-size: 1rem;
+	    line-height: 1rem;
+	    height: 1rem;
+	    text-align: right;
+	    white-space: nowrap;
+	    direction: ltr;
+	    width: 12.5rem;
+	    -webkit-transform: rotate(-90deg);
+	    transform: rotate(-90deg);
+	    -webkit-transform-origin: 0 100%;
+	    transform-origin: 0 100%;
+	}
 .article-entry blockquote footer {
   font-size: 14px;
   margin: 1.6em 0;
@@ -1380,4 +1403,6 @@ pre .javascript .function {
 .tagcloud a {
   margin-right: 5px;
   display: inline-block;
-}
+}        
+        
+        
