@@ -110,45 +110,16 @@ GET参数通过URL传递，POST放在Request body中。
 </code></pre><p>（本标准答案参考自w3schools）</p>
 <p>“很遗憾，这不是我们要的回答！”</p>
 <p><img src="/2016/09/f0fd4334d974db6df8ef1e89d016babe.png" alt="我的内心是崩溃的"></p>
-<p>请告诉我真相。。。</p>
-<p>如果我告诉你GET和POST本质上没有区别你信吗？<br>让我们扒下GET和POST的外衣，坦诚相见吧！</p>
-<p><img src="/2016/09/138cf5d4582857a8572b641fe041519c.png" alt="O(∩_∩)O"></p>
-<p>GET和POST是什么？HTTP协议中的两种发送请求的方法。</p>
-<p>HTTP是什么？HTTP是基于TCP/IP的关于数据如何在万维网中如何通信的协议。</p>
-<p>HTTP的底层是TCP/IP。所以GET和POST的底层也是TCP/IP，也就是说，GET/POST都是TCP链接。GET和POST能做的事情是一样一样的。你要给GET加上request body，给POST带上url参数，技术上是完全行的通的。</p>
-<p>那么，“标准答案”里的那些区别是怎么回事？</p>
-<p><img src="/2016/09/9adc879f200f18c2081007e6189708b3.png" alt=""></p>
-<p>在我大万维网世界中，TCP就像汽车，我们用TCP来运输数据，它很可靠，从来不会发生丢件少件的现象。但是如果路上跑的全是看起来一模一样的汽车，那这个世界看起来是一团混乱，送急件的汽车可能被前面满载货物的汽车拦堵在路上，整个交通系统一定会瘫痪。为了避免这种情况发生，交通规则HTTP诞生了。HTTP给汽车运输设定了好几个服务类别，有GET, POST, PUT, DELETE等等，HTTP规定，当执行GET请求的时候，要给汽车贴上GET的标签（设置method为GET），而且要求把传送的数据放在车顶上（url中）以方便记录。如果是POST请求，就要在车上贴上POST的标签，并把货物放在车厢里。当然，你也可以在GET的时候往车厢内偷偷藏点货物，但是这是很不光彩；也可以在POST的时候在车顶上也放一些数据，让人觉得傻乎乎的。HTTP只是个行为准则，而TCP才是GET和POST怎么实现的基本。</p>
-<p>但是，我们只看到HTTP对GET和POST参数的传送渠道（url还是requrest body）提出了要求。“标准答案”里关于参数大小的限制又是从哪来的呢？</p>
-<p><img src="/2016/09/7d4951f4f0aec2338987f4624cfed135.png" alt=""></p>
-<p>在我大万维网世界中，还有另一个重要的角色：运输公司。不同的浏览器（发起http请求）和服务器（接受http请求）就是不同的运输公司。 虽然理论上，你可以在车顶上无限的堆货物（url中无限加参数）。但是运输公司可不傻，装货和卸货也是有很大成本的，他们会限制单次运输量来控制风险，数据量太大对浏览器和服务器都是很大负担。业界不成文的规定是，（大多数）浏览器通常都会限制url长度在2K个字节，而（大多数）服务器最多处理64K大小的url。超过的部分，恕不处理。如果你用GET服务，在request body偷偷藏了数据，不同服务器的处理方式也是不同的，有些服务器会帮你卸货，读出数据，有些服务器直接忽略，所以，虽然GET可以带request body，也不能保证一定能被接收到哦。</p>
-<p>好了，现在你知道，GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。</p>
-<p>你以为本文就这么结束了？</p>
-<p><img src="/2016/09/60d723cf5b116a06f03106813c690560.png" alt=""></p>
-<p>我们的大BOSS还等着出场呢。。。</p>
-<p>这位BOSS有多神秘？当你试图在网上找“GET和POST的区别”的时候，那些你会看到的搜索结果里，从没有提到他。他究竟是什么呢。。。</p>
-<p>GET和POST还有一个重大区别，简单的说：</p>
-<p>GET产生一个TCP数据包；POST产生两个TCP数据包。</p>
-<p>长的说：</p>
-<p>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；</p>
-<p>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</p>
-<p>也就是说，GET只需要汽车跑一趟就把货送到了，而POST得跑两趟，第一趟，先去和服务器打个招呼“嗨，我等下要送一批货来，你们打开门迎接我”，然后再回头把货送过去。</p>
-<p>因为POST需要两步，时间上消耗的要多一点，看起来GET比POST更有效。因此Yahoo团队有推荐用GET替换POST来优化网站性能。但这是一个坑！跳入需谨慎。为什么？</p>
-<ol>
-<li><p>GET与POST都有自己的语义，不能随便混用。</p>
-</li>
-<li><p>据研究，在网络环境好的情况下，发一次包的时间和发两次包的时间差别基本可以无视。而在网络环境差的情况下，两次包的TCP在验证数据包完整性上，有非常大的优点。</p>
-</li>
-<li><p>并不是所有浏览器都会在POST中发送两次包，Firefox就只发送一次。</p>
-</li>
-</ol>
-<p>现在，当面试官再问你“GET与POST的区别”的时候，你的内心是不是这样的？</p>
-<p><img src="/2016/09/52e6a20bcf99b8fce4d146e7e8a3436a.png" alt=""></p>
-
+<p>请告诉我真相。。。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/09/25/99-的人都理解错了http的get和post的区别/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/25/99-的人都理解错了http的get和post的区别/" data-id="citjgmygx0000fg6nh13weoah" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/25/99-的人都理解错了http的get和post的区别/" data-id="citkzteyb00000r6nfk0itbei" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/get/">get</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/">post</a></li></ul>
@@ -191,7 +162,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/19/知乎回答收藏/" data-id="citjgmyje000sfg6nnmjy980o" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/19/知乎回答收藏/" data-id="citkztf0v000s0r6nw1fszs95" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,7 +209,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/" data-id="citjgmyjh000wfg6nb1d05y2o" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/" data-id="citkztf0x000w0r6nr9r8bxjq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/h5/">h5</a></li></ul>
@@ -286,7 +257,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/16/浅谈CSS3-Filter的10种特效/" data-id="citjgmyj8000ofg6n9g3jhlc9" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/16/浅谈CSS3-Filter的10种特效/" data-id="citkztf0o000o0r6ncd3c973y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li></ul>
@@ -332,7 +303,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/16/Parallux-响应式网页视差效果/" data-id="citjgmyh80002fg6n5b2ulwij" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/16/Parallux-响应式网页视差效果/" data-id="citkzteyn00020r6np5jgb6in" class="article-share-link">Share</a>
       
       
     </footer>
@@ -369,7 +340,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/16/python-网易公开课教程分享/" data-id="citjgmyi1000afg6nckvth6fg" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/16/python-网易公开课教程分享/" data-id="citkztezi000a0r6ne6zhhexx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -418,7 +389,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/14/http协议何时开启keep-alive/" data-id="citjgmyhv0006fg6nvpjf6umw" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/14/http协议何时开启keep-alive/" data-id="citkztezc00060r6nqfvsqjib" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keep-alive/">keep-alive</a></li></ul>
@@ -465,7 +436,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/13/使用aiohttp异步框架编写web/" data-id="citjgmyib000gfg6net4jb4aa" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/13/使用aiohttp异步框架编写web/" data-id="citkztezr000g0r6nzot9bf6p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nohup/">nohup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -512,7 +483,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/06/python-metaclass-django-orm-demo/" data-id="citjgmyhz0008fg6nanp7tnpe" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/06/python-metaclass-django-orm-demo/" data-id="citkztezf00080r6nzuvul4cj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/orm/">orm</a></li></ul>
@@ -555,7 +526,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/08/19/局域网arp攻击解决方法/" data-id="citjgmyj4000lfg6nt0q7pg1n" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/08/19/局域网arp攻击解决方法/" data-id="citkztf0j000l0r6nb1uhn06g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arp/">arp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netsh/">netsh</a></li></ul>

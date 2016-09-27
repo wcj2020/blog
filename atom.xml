@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nodejs.wxwztj.com/"/>
-  <updated>2016-09-25T01:48:38.367Z</updated>
+  <updated>2016-09-27T00:38:05.957Z</updated>
   <id>http://nodejs.wxwztj.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://nodejs.wxwztj.com/2016/09/25/99-%E7%9A%84%E4%BA%BA%E9%83%BD%E7%90%86%E8%A7%A3%E9%94%99%E4%BA%86http%E7%9A%84get%E5%92%8Cpost%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <id>http://nodejs.wxwztj.com/2016/09/25/99-的人都理解错了http的get和post的区别/</id>
     <published>2016-09-25T01:37:00.000Z</published>
-    <updated>2016-09-25T01:48:38.367Z</updated>
+    <updated>2016-09-27T00:38:05.957Z</updated>
     
     <content type="html"><![CDATA[<p>GET和POST是HTTP请求的两种基本方法，要说它们的区别，接触过WEB开发的人都能说出一二。</p>
 <p>最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。</p>
@@ -40,8 +40,7 @@ GET参数通过URL传递，POST放在Request body中。
 </code></pre><p>（本标准答案参考自w3schools）</p>
 <p>“很遗憾，这不是我们要的回答！”</p>
 <p><img src="/2016/09/f0fd4334d974db6df8ef1e89d016babe.png" alt="我的内心是崩溃的"></p>
-<p>请告诉我真相。。。</p>
-<p>如果我告诉你GET和POST本质上没有区别你信吗？<br>让我们扒下GET和POST的外衣，坦诚相见吧！</p>
+<p>请告诉我真相。。。<br><a id="more"></a><br>如果我告诉你GET和POST本质上没有区别你信吗？<br>让我们扒下GET和POST的外衣，坦诚相见吧！</p>
 <p><img src="/2016/09/138cf5d4582857a8572b641fe041519c.png" alt="O(∩_∩)O"></p>
 <p>GET和POST是什么？HTTP协议中的两种发送请求的方法。</p>
 <p>HTTP是什么？HTTP是基于TCP/IP的关于数据如何在万维网中如何通信的协议。</p>
@@ -80,7 +79,23 @@ GET参数通过URL传递，POST放在Request body中。
     
       &lt;p&gt;GET和POST是HTTP请求的两种基本方法，要说它们的区别，接触过WEB开发的人都能说出一二。&lt;/p&gt;
 &lt;p&gt;最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。&lt;/p&gt;
-&lt;p&gt;你可能自己写过无数个GET和POST请求，或者已经看过很
+&lt;p&gt;你可能自己写过无数个GET和POST请求，或者已经看过很多权威网站总结出的他们的区别，你非常清楚知道什么时候该用什么。&lt;/p&gt;
+&lt;p&gt;当你在面试中被问到这个问题，你的内心充满了自信和喜悦。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2016/09/7033e829adefa33d1a660664ac93e600.png&quot; alt=&quot;so easy&quot;&gt;&lt;/p&gt;
+&lt;p&gt;你轻轻松松的给出了一个“标准答案”：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET在浏览器回退时是无害的，而POST会再次提交请求。
+GET产生的URL地址可以被Bookmark，而POST不可以。
+GET请求会被浏览器主动cache，而POST不会，除非手动设置。
+GET请求只能进行url编码，而POST支持多种编码方式。
+GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。
+GET请求在URL中传送的参数是有长度限制的，而POST么有。
+对参数的数据类型，GET只接受ASCII字符，而POST没有限制。
+GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。
+GET参数通过URL传递，POST放在Request body中。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;（本标准答案参考自w3schools）&lt;/p&gt;
+&lt;p&gt;“很遗憾，这不是我们要的回答！”&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2016/09/f0fd4334d974db6df8ef1e89d016babe.png&quot; alt=&quot;我的内心是崩溃的&quot;&gt;&lt;/p&gt;
+&lt;p&gt;请告诉我真相。。。&lt;br&gt;
     
     </summary>
     

@@ -24,8 +24,7 @@ GET参数通过URL传递，POST放在Request body中。
 </code></pre><p>（本标准答案参考自w3schools）</p>
 <p>“很遗憾，这不是我们要的回答！”</p>
 <p><img src="/2016/09/f0fd4334d974db6df8ef1e89d016babe.png" alt="我的内心是崩溃的"></p>
-<p>请告诉我真相。。。</p>
-<p>如果我告诉你GET和POST本质上没有区别你信吗？<br>让我们扒下GET和POST的外衣，坦诚相见吧！</p>
+<p>请告诉我真相。。。<br><a id="more"></a><br>如果我告诉你GET和POST本质上没有区别你信吗？<br>让我们扒下GET和POST的外衣，坦诚相见吧！</p>
 <p><img src="/2016/09/138cf5d4582857a8572b641fe041519c.png" alt="O(∩_∩)O"></p>
 <p>GET和POST是什么？HTTP协议中的两种发送请求的方法。</p>
 <p>HTTP是什么？HTTP是基于TCP/IP的关于数据如何在万维网中如何通信的协议。</p>
