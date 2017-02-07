@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>AngularJS 中使用Swiper制作滚动图不能滑动  | 王纯建的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Swiper是目前较为流行的移动端触摸滑动插件，因为其简单好用易上手，受到很多前端开发者的欢迎。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS 中使用Swiper制作滚动图不能滑动 ">
+<meta property="og:url" content="http://nodejs.wxwztj.com/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/index.html">
+<meta property="og:site_name" content="王纯建的博客">
+<meta property="og:description" content="Swiper是目前较为流行的移动端触摸滑动插件，因为其简单好用易上手，受到很多前端开发者的欢迎。">
+<meta property="og:updated_time" content="2016-11-18T01:42:24.539Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS 中使用Swiper制作滚动图不能滑动 ">
+<meta name="twitter:description" content="Swiper是目前较为流行的移动端触摸滑动插件，因为其简单好用易上手，受到很多前端开发者的欢迎。">
+  
+    <link rel="alternate" href="/atom.xml" title="王纯建的博客" type="application/atom+xml">
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+        
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">王纯建的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">hexo搭建</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://nodejs.wxwztj.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+        
+      <div class="outer">
+        <section id="main"><article id="post-AngularJS-中使用Swiper制作滚动图不能滑动" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/" class="article-date">
+  <time datetime="2016-11-18T01:40:24.000Z" itemprop="datePublished">2016-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AngularJS 中使用Swiper制作滚动图不能滑动 
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>Swiper</code>是目前较为流行的移动端触摸滑动插件，因为其简单好用易上手，受到很多前端开发者的欢迎。<br><a id="more"></a><br>今天在使用<code>Swiper</code>的时候遇到这个问题：</p>
+<p>使用<code>angularjs</code>动态循环生成<code>swiper-slide</code>类，在<code>swiper-wrapper</code>里生成6个以上的滑动页，可是就是划不到第二页，尝试将<code>longSwipesRatio</code>的值修改到最小，仍然不起作用。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-wrapper"</span> &gt;</span></div><div class="line">     <span class="comment">&lt;!-- =======循环部分======= --&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-slide"</span> <span class="attr">ng-repeat</span>=<span class="string">"result in mediaList"</span>&gt;</span></div><div class="line">         //此处为一个滑动页内容</div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>    </div><div class="line">      <span class="comment">&lt;!-- ============== --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在测试时发现，手动复制n个循环部分，则可以滑动n个块；手动调节窗口大小，使页面文档发生改变（动态响应）后，可以正常滑动。</p>
+<p>于是猜测<code>swiper</code>的机制是：初始化的时候自动扫描<code>swiper-wrapper</code>类下有多少个<code>swiper-slide</code>类块，则允许滑动多少个块。 而在<code>angular</code>始终在<code>swiper</code>初始化之后定义，<code>swiper</code>则无法正确<code>scan</code>有多少个<code>slide</code>（实际上找到一个待循环模板），所以划不动。</p>
+<p>找到原因后，只须对症下药。 在查阅<code>Swiper</code>的<code>API</code>时发现，有这样两个参数：<code>observer</code>和<code>observeParents</code>，前者启动动态检查器，当改变<code>swiper</code>的样式（例如隐藏/显示）或者修改<code>swiper</code>的子元素时，自动初始化<code>swiper</code>。后者原理和前者一样，只是将<code>observe</code>应用于<code>Swiper</code>的父元素。两者默认值都为<code>false</code>。 所以在原来的<code>swiper</code>初始化代码中加上这两行即可。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mySwiper = <span class="keyword">new</span> Swiper(<span class="string">'.swiper-container'</span>,&#123;</div><div class="line">pagination : <span class="string">'.swiper-pagination'</span>,</div><div class="line">    paginationClickable: <span class="literal">true</span>,</div><div class="line">    longSwipesRatio: <span class="number">0.3</span>,</div><div class="line">    touchRatio:<span class="number">1</span>,</div><div class="line">    observer:<span class="literal">true</span>,<span class="comment">//修改swiper自己或子元素时，自动初始化swiper</span></div><div class="line">    observeParents:<span class="literal">true</span>,<span class="comment">//修改swiper的父元素时，自动初始化swiper</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/" data-id="ciyv8whdd0002266nbo3a0fv6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端优化系列之一：DNS预获取 DNS Prefetch 提升页面载入速度
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/11/facebook登录-在-php-框架-slim里的实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">facebook登录 在 php 框架 slim里的实现</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/https/">https</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firefox/">firefox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/get/">get</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sec-error-revoked-certificate/">sec_error_revoked_certificate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startssl/">startssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/firefox/" style="font-size: 10px;">firefox</a> <a href="/tags/get/" style="font-size: 10px;">get</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sec-error-revoked-certificate/" style="font-size: 10px;">sec_error_revoked_certificate</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/startssl/" style="font-size: 10px;">startssl</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/02/04/解决Firefox不信任StartSSL证书问题/">解决Firefox不信任StartSSL证书问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/04/elasticsearch写入数据存储过程/">elasticsearch写入数据存储过程</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/">前端优化系列之一：DNS预获取 DNS Prefetch 提升页面载入速度</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/">AngularJS 中使用Swiper制作滚动图不能滑动 </a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/11/facebook登录-在-php-框架-slim里的实现/">facebook登录 在 php 框架 slim里的实现</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 wcj2020<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
+      备案号:<a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备16051142号</a>
+    </div>
+  </div>
+</footer>
+        
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/1.10.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+        
+  </div>
+</body>
+</html>

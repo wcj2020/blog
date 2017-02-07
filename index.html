@@ -66,6 +66,349 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-解决Firefox不信任StartSSL证书问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/04/解决Firefox不信任StartSSL证书问题/" class="article-date">
+  <time datetime="2017-02-04T07:42:00.000Z" itemprop="datePublished">2017-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/https/">https</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/04/解决Firefox不信任StartSSL证书问题/">解决Firefox不信任StartSSL证书问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 <a href="https://startssl.com/">Startssl</a> 注册好证书 <code>nginx</code> 下配置好生效后,<code>firefox</code>出现 <code>对等端的证书已被废除。 (错误代码:sec_error_revoked_certificate)</code>。其实并不是火狐不支持，而是自己没有配置好。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://startssl.com/certs/ca.crt</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Description: This root CA is the root used for all Certificates and must be included in root stores. ↑</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://startssl.com/certs/sca.server1.crt</div></pre></td></tr></table></figure>
+<blockquote>
+<p>下载Startssl Class 1的根证书 ↑</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat server.crt ca.crt sca.server1.crt &gt; servernew.crt</div></pre></td></tr></table></figure>
+<blockquote>
+<p>server.crt 是域名的证书,后面合并的俩文件是下载的Startssl根证书和Startssl Class1根证书</p>
+</blockquote>
+<p>现在可以正常访问了。</p>
+<p><a href="https://daily.81810999.com/">https://daily.81810999.com/</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/02/04/解决Firefox不信任StartSSL证书问题/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2017/02/04/解决Firefox不信任StartSSL证书问题/" data-id="ciyv8whg9001c266nzblsc7j8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/firefox/">firefox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sec-error-revoked-certificate/">sec_error_revoked_certificate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/startssl/">startssl</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-elasticsearch写入数据存储过程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/04/elasticsearch写入数据存储过程/" class="article-date">
+  <time datetime="2017-02-04T00:57:00.000Z" itemprop="datePublished">2017-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/elasticsearch/">elasticsearch</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/04/elasticsearch写入数据存储过程/">elasticsearch写入数据存储过程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>es建索引写入数据，数据最先是存在内存buffer里的，然后再刷入到lucene的底层文件segment中；写入segment完毕后再执行refresh操作，refresh操作后，数据将commit到磁盘中。数据刷入到了磁盘，就可以执行查询操作了。</p>
+<blockquote>
+<p>过程简单描述如下：内存<code>buffer</code>–&gt;<code>segment</code>–&gt;<code>refresh</code>–&gt;<code>磁盘</code></p>
+</blockquote>
+<p>注意，这些过程，会有<code>translog</code>记录；<code>translog</code>存在的意义就是保证数据刷入的可靠性；因为我们刚才说过，es建索引写入数据的过程是内存到磁盘的过程，这个过程有日志的记录，那就是<code>translog</code>，当数据还在内存里没刷到磁盘中时，如果服务器<code>down</code>了又没<code>translog</code>机制的话，那么数据就会丢失，有了<code>translog</code>，服务器<code>down</code>机后再起来，就能很快恢复写入的过程。</p>
+<p>这里要注意的是，<code>translog</code>也是先存在内存里的，然后默认5秒刷一次写到硬盘里</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2017/02/04/elasticsearch写入数据存储过程/" data-id="ciyv8whes000a266nxnfecfeg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-first-of-front-end-series-dns-prefetch-increase-load-speed" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/" class="article-date">
+  <time datetime="2016-12-11T02:05:30.000Z" itemprop="datePublished">2016-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/">前端优化系列之一：DNS预获取 DNS Prefetch 提升页面载入速度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>DNS Prefetch</code>，即<code>DNS</code>预获取，是前端优化的一部分。一般来说，在前端优化中与 DNS 有关的有两点：一个是减少<code>DNS</code>的请求次数，另一个就是进行DNS预获取。</p>
+<p><code>DNS</code> 作为互联网的基础协议，其解析的速度似乎很容易被网站优化人员忽视。现在大多数新浏览器已经针对DNS解析进行了优化，典型的一次DNS解析需要耗费 20-120 毫秒，减少DNS解析时间和次数是个很好的优化方式。<code>DNS Prefetching</code> 是让具有此属性的域名不需要用户点击链接就在后台解析，而域名解析和内容载入是串行的网络操作，所以这个方式能减少用户的等待时间，提升用户体验。</p>
+<p>默认情况下浏览器会对页面中和当前域名（正在浏览网页的域名）不在同一个域的域名进行预获取，并且缓存结果，这就是隐式的 <code>DNS Prefetch</code>。如果想对页面中没有出现的域进行预获取，那么就要使用显示的 <code>DNS Prefetch</code> 了。</p>
+<p>目前大多数浏览器已经支持此属性，支持版本如下：</p>
+<ul>
+<li><code>Safari: 5+</code></li>
+<li><code>Chrome: All</code></li>
+<li><code>Firefox: 3.5+</code></li>
+<li><code>Opera: Unknown</code></li>
+<li><code>IE: 9+ (called “Pre-resolution” on blogs.msdn.com)</code></li>
+</ul>
+<p>其中 <code>Chrome</code> 和 <code>Firefox 3.5+</code> 内置了 <code>DNS Prefetching</code> 技术并对DNS预解析做了相应优化设置。所以即使不设置此属性，<code>Chrome</code> 和 <code>Firefox 3.5+</code> 也能自动在后台进行预解析。</p>
+<p><code>DNS Prefetch</code> 应该尽量的放在网页的前面，推荐放在<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>后面。具体使用方法如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"on"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//www.techzero.cn"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//api.share.baidu.com"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"dns-prefetch"</span> <span class="attr">href</span>=<span class="string">"//bdimg.share.baidu.com"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>需要注意的是，虽然使用 DNS Prefetch 能够加快页面的解析速度，但是也不能滥用，因为有开发者指出 禁用DNS 预读取能节省每月100亿的DNS查询。</p>
+<p>如果需要禁止隐式的 DNS Prefetch，可以使用以下的标签：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"x-dns-prefetch-control"</span> <span class="attr">content</span>=<span class="string">"off"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/" data-id="ciyv8whey000e266ne8om7b05" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AngularJS-中使用Swiper制作滚动图不能滑动" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/" class="article-date">
+  <time datetime="2016-11-18T01:40:24.000Z" itemprop="datePublished">2016-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/">AngularJS 中使用Swiper制作滚动图不能滑动 </a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>Swiper</code>是目前较为流行的移动端触摸滑动插件，因为其简单好用易上手，受到很多前端开发者的欢迎。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/" data-id="ciyv8whdd0002266nbo3a0fv6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-facebook登录-在-php-框架-slim里的实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/11/facebook登录-在-php-框架-slim里的实现/" class="article-date">
+  <time datetime="2016-11-11T05:35:09.000Z" itemprop="datePublished">2016-11-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/11/facebook登录-在-php-框架-slim里的实现/">facebook登录 在 php 框架 slim里的实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>首先使用<code>composer</code> 安装 facebook的php SDK<br><code>composer require facebook/graph-sdk</code></p>
+</blockquote>
+<p>使用了Slim框架，登录也是调用的接口，总共定义了两个链接(或者路由)<code>facebookLogin</code>和<code>facebookCallback</code> . 一个入口链接:负责处理跳转到facebook登录并跳回的功能。另一个是处理回调的：获取facebook的用户基本信息并登录。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/11/facebook登录-在-php-框架-slim里的实现/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2016/11/11/facebook登录-在-php-框架-slim里的实现/" data-id="ciyv8whev000c266nx79tgs2b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-apache-tomcat7-0-win7上的安装和启动" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/29/apache-tomcat7-0-win7上的安装和启动/" class="article-date">
+  <time datetime="2016-09-29T00:36:09.000Z" itemprop="datePublished">2016-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/29/apache-tomcat7-0-win7上的安装和启动/">spring jdbc 操作 mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>build.gradle</code><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">buildscript</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        mavenCentral()</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">dependencies</span> &#123;</div><div class="line">        <span class="keyword">classpath</span>(<span class="string">"org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">apply plugin: <span class="string">'java'</span></div><div class="line">apply plugin: <span class="string">'eclipse'</span></div><div class="line">apply plugin: <span class="string">'idea'</span></div><div class="line">apply plugin: <span class="string">'spring-boot'</span></div><div class="line"></div><div class="line">jar &#123;</div><div class="line">    baseName = <span class="string">'gs-serving-web-content'</span></div><div class="line">    version =  <span class="string">'0.1.0'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">repositories</span> &#123;</div><div class="line">    mavenCentral()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">sourceCompatibility</span> = <span class="number">1.8</span></div><div class="line"><span class="keyword">targetCompatibility</span> = <span class="number">1.8</span></div><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span>(<span class="string">"org.springframework.boot:spring-boot-starter-thymeleaf"</span>)</div><div class="line">    <span class="keyword">compile</span>(<span class="string">"org.springframework:spring-jdbc"</span>)</div><div class="line">    <span class="keyword">compile</span>(<span class="string">"mysql:mysql-connector-java:5.1.24"</span>)</div><div class="line">    <span class="keyword">compile</span>(<span class="string">"org.springframework.boot:spring-boot-devtools"</span>)</div><div class="line">    testCompile(<span class="string">"junit:junit"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/09/29/apache-tomcat7-0-win7上的安装和启动/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2016/09/29/apache-tomcat7-0-win7上的安装和启动/" data-id="ciyv8whep0008266ngs8ym82j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Serving-Web-Content-with-Spring-MVC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/28/Serving-Web-Content-with-Spring-MVC/" class="article-date">
+  <time datetime="2016-09-28T13:50:00.000Z" itemprop="datePublished">2016-09-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/28/Serving-Web-Content-with-Spring-MVC/">Serving Web Content with Spring MVC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://spring.io/guides/gs/serving-web-content/">https://spring.io/guides/gs/serving-web-content/</a></p>
+<p><code>gradle</code>用着确实比<code>maven</code>6很多，该demo主要使用<code>spring boot</code> 和 <code>thymeleaf</code>.本人系统环境 <code>win7</code></p>
+<ul>
+<li>IntelliJ IDEA</li>
+<li>JDK 1.8</li>
+<li>Gradle3.1</li>
+</ul>
+<h3 id="代码效果预览"><a href="#代码效果预览" class="headerlink" title="代码效果预览"></a>代码效果预览</h3><ul>
+<li>使用git下载源码：<code>git clone https://github.com/spring-guides/gs-serving-web-content.git</code></li>
+<li><code>cd gs-serving-web-content\complete</code></li>
+<li><code>gradle bootRun</code> 或 <code>gradle build</code>之后运行<code>java -jar build/libs/gs-serving-web-content-0.1.0.jar</code>皆可
+        
+          <p class="article-more-link">
+            <a href="/2016/09/28/Serving-Web-Content-with-Spring-MVC/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2016/09/28/Serving-Web-Content-with-Spring-MVC/" data-id="ciyv8whe20006266n18lg85q7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-99-的人都理解错了http的get和post的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/09/25/99-的人都理解错了http的get和post的区别/" class="article-date">
@@ -119,7 +462,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/25/99-的人都理解错了http的get和post的区别/" data-id="citkzxm4t0000256n2fynh410" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/25/99-的人都理解错了http的get和post的区别/" data-id="ciyv8whd10000266npc9uuyvq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/get/">get</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/">post</a></li></ul>
@@ -162,7 +505,7 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/19/知乎回答收藏/" data-id="citkzxm72000s256nygi5ikjc" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/19/知乎回答收藏/" data-id="ciyv8whg60017266nh8w8ist9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,327 +552,10 @@ GET参数通过URL传递，POST放在Request body中。
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/" data-id="citkzxm75000w256nuyva7bkd" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/" data-id="ciyv8whgi001f266nntur3gep" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/h5/">h5</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-浅谈CSS3-Filter的10种特效" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/16/浅谈CSS3-Filter的10种特效/" class="article-date">
-  <time datetime="2016-09-16T07:51:00.000Z" itemprop="datePublished">2016-09-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/css3/">css3</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/16/浅谈CSS3-Filter的10种特效/">CSS3 Filter的特效</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="css语法"><a href="#css语法" class="headerlink" title="css语法"></a>css语法</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">filter: none | blur() | brightness() | contrast() | drop-shadow() | grayscale() |</div><div class="line">hue-rotate() | invert() | opacity() | saturate() | sepia() | url();</div></pre></td></tr></table></figure>
-<h2 id="高斯模糊-blur-示例"><a href="#高斯模糊-blur-示例" class="headerlink" title="高斯模糊(blur)示例"></a>高斯模糊(blur)示例</h2><p><a href="/2016/css-filter/blur.html">demo</a><br>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/16/浅谈CSS3-Filter的10种特效/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/16/浅谈CSS3-Filter的10种特效/" data-id="citkzxm6v000o256nj143n98v" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Parallux-响应式网页视差效果" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/16/Parallux-响应式网页视差效果/" class="article-date">
-  <time datetime="2016-09-16T07:10:34.000Z" itemprop="datePublished">2016-09-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/16/Parallux-响应式网页视差效果/">Parallux-响应式网页视差效果</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Parallax-js"><a href="#Parallax-js" class="headerlink" title="Parallax.js"></a>Parallax.js</h1><p>示例：</p>
-<ul>
-<li><a href="/2016/2/">Parallux-响应式网页滚动视觉差特效 &amp; CSS图片filter的blur模糊和灰色gray</a> </li>
-<li><a href="/2016/1/">纯css3实现视觉差效果</a>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/16/Parallux-响应式网页视差效果/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/16/Parallux-响应式网页视差效果/" data-id="citkzxm530002256n4s1lh6nj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-网易公开课教程分享" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/16/python-网易公开课教程分享/" class="article-date">
-  <time datetime="2016-09-16T00:41:00.000Z" itemprop="datePublished">2016-09-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/16/python-网易公开课教程分享/">python 网易(MIT)公开课教程分享</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://open.163.com/special/opencourse/bianchengdaolun.html" target="_blank" rel="external">麻省理工学院公开课：计算机科学及编程导论</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/16/python-网易公开课教程分享/" data-id="citkzxm5u000a256nw10b5c2m" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-http协议何时开启keep-alive" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/14/http协议何时开启keep-alive/" class="article-date">
-  <time datetime="2016-09-14T05:20:00.000Z" itemprop="datePublished">2016-09-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/http/">http</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/14/http协议何时开启keep-alive/">http协议何时开启keep-alive(转)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="在网页开发过程中，Keep-Alive是HTTP协议中非常重要的一个属性。"><a href="#在网页开发过程中，Keep-Alive是HTTP协议中非常重要的一个属性。" class="headerlink" title="在网页开发过程中，Keep-Alive是HTTP协议中非常重要的一个属性。"></a>在网页开发过程中，Keep-Alive是HTTP协议中非常重要的一个属性。</h4><blockquote>
-<p>大家知道HTTP构建在TCP之上。在HTTP早期实现中，每个HTTP请求都要打开一个socket连接。这种做效率很低，因为一个Web 页面中的很多HTTP请求都指向同一个服务器。例如，很多为Web页面中的图片发起的请求都指向一个通用的图片服务器。持久连接的引入解决了多对已请求服务器导致的socket连接低效性的问题。它使浏览器可以再一个单独的连接上进行多个请求。浏览器和服务器使用Connection头里指出对Keep-Alive的支持。</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/14/http协议何时开启keep-alive/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/14/http协议何时开启keep-alive/" data-id="citkzxm5p0006256ngvff27mu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keep-alive/">keep-alive</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-使用aiohttp异步框架编写web" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/13/使用aiohttp异步框架编写web/" class="article-date">
-  <time datetime="2016-09-13T00:40:00.000Z" itemprop="datePublished">2016-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/13/使用aiohttp异步框架编写web/">python使用aiohttp异步框架编写web 并部署到centos上</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>web框架使用<code>aiohttp</code>,模板引擎<code>jinja2</code>,数据库操作使用<code>aiomysql</code>稍作封装的一个<code>ORM</code>(廖雪峰的教程上提供的 <a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014323389656575142d0bcfeec434e9639a80d3684a7da000">编写ORM</a>)</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/13/使用aiohttp异步框架编写web/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/13/使用aiohttp异步框架编写web/" data-id="citkzxm62000g256nt1zunngk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nohup/">nohup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-metaclass-django-orm-demo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/06/python-metaclass-django-orm-demo/" class="article-date">
-  <time datetime="2016-09-06T08:28:00.000Z" itemprop="datePublished">2016-09-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/06/python-metaclass-django-orm-demo/">python metaclass django orm demo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一般情况下通过metaclass修改纯属变态，但是，总会遇到需要通过<code>metaclass</code>修改类定义的。<code>Diango</code>的<code>ORM</code>就是一个典型的例子。<br>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/06/python-metaclass-django-orm-demo/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/06/python-metaclass-django-orm-demo/" data-id="citkzxm5s0008256nddwmvnne" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/orm/">orm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-局域网arp攻击解决方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/19/局域网arp攻击解决方法/" class="article-date">
-  <time datetime="2016-08-19T02:26:00.000Z" itemprop="datePublished">2016-08-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/19/局域网arp攻击解决方法/">局域网arp攻击解决方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>路由器端和PC端  mac地址和ip双向绑定<br>win7,8,10等操作系统下以管理员身份运行命令行。<br><code>arp -a</code> , <code>netsh i i show in</code> , <code>netsh -c &quot;i i&quot; add ne 本地连接idx 路由器网关 路由器mac地址</code><br>
-        
-          <p class="article-more-link">
-            <a href="/2016/08/19/局域网arp攻击解决方法/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/08/19/局域网arp攻击解决方法/" data-id="citkzxm6d000l256nhdrnha3o" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arp/">arp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netsh/">netsh</a></li></ul>
 
     </footer>
   </div>
@@ -551,7 +577,7 @@ GET参数通过URL传递，POST放在Request body中。
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/https/">https</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
     </div>
   </div>
 
@@ -561,7 +587,7 @@ GET参数通过URL传递，POST放在Request body中。
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/get/">get</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firefox/">firefox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/get/">get</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sec-error-revoked-certificate/">sec_error_revoked_certificate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startssl/">startssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li></ul>
     </div>
   </div>
 
@@ -571,7 +597,7 @@ GET参数通过URL传递，POST放在Request body中。
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/get/" style="font-size: 10px;">get</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a>
+      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/firefox/" style="font-size: 10px;">firefox</a> <a href="/tags/get/" style="font-size: 10px;">get</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sec-error-revoked-certificate/" style="font-size: 10px;">sec_error_revoked_certificate</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/startssl/" style="font-size: 10px;">startssl</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a>
     </div>
   </div>
 
@@ -580,7 +606,7 @@ GET参数通过URL传递，POST放在Request body中。
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
     </div>
   </div>
 
@@ -593,23 +619,23 @@ GET参数通过URL传递，POST放在Request body中。
       <ul>
         
           <li>
-            <a href="/2016/09/25/99-的人都理解错了http的get和post的区别/">99%的人都理解错了http的get和post的区别</a>
+            <a href="/2017/02/04/解决Firefox不信任StartSSL证书问题/">解决Firefox不信任StartSSL证书问题</a>
           </li>
         
           <li>
-            <a href="/2016/09/19/知乎回答收藏/">知乎回答收藏</a>
+            <a href="/2017/02/04/elasticsearch写入数据存储过程/">elasticsearch写入数据存储过程</a>
           </li>
         
           <li>
-            <a href="/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/">鼠标滚动mousewheel和touch滑动全屏切换效果</a>
+            <a href="/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/">前端优化系列之一：DNS预获取 DNS Prefetch 提升页面载入速度</a>
           </li>
         
           <li>
-            <a href="/2016/09/16/浅谈CSS3-Filter的10种特效/">CSS3 Filter的特效</a>
+            <a href="/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/">AngularJS 中使用Swiper制作滚动图不能滑动 </a>
           </li>
         
           <li>
-            <a href="/2016/09/16/Parallux-响应式网页视差效果/">Parallux-响应式网页视差效果</a>
+            <a href="/2016/11/11/facebook登录-在-php-框架-slim里的实现/">facebook登录 在 php 框架 slim里的实现</a>
           </li>
         
       </ul>
@@ -624,11 +650,13 @@ GET参数通过URL传递，POST放在Request body中。
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 wcj2020<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2017 wcj2020<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
+      备案号:<a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备16051142号</a>
     </div>
   </div>
 </footer>
+        
     </div>
     <nav id="mobile-nav">
   
