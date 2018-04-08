@@ -66,6 +66,217 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-IIS-FTP连接报530User-cannot-logged-in" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/09/IIS-FTP连接报530User-cannot-logged-in/" class="article-date">
+  <time datetime="2018-01-09T08:10:51.000Z" itemprop="datePublished">2018-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/09/IIS-FTP连接报530User-cannot-logged-in/">IIS FTP连接报530User cannot logged in</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在<code>server2003</code>新建ftp用户并开启<code>IIS</code>的<code>Ftp</code>功能之后，有时在连接这个ftp的时候会出现<code>530 User 用户名 cannot login home directory inaccessible</code>的错误，网上一般的解决方法是ftp目录是否存在，用户权限是否设置正确等等。但是经常是这些都是设置正确的，却还是出现这样的错误提示。</p>
+<p>　　其实原因是在新建IIS-FTP的时候选择了<code>隔离用户</code>，而在你选择的FTP文件夹却和这个用户相关的文件夹不同，所以自然就会出现这个提示，而找不到解决方法了。</p>
+<p>　　这个就涉及到<code>server 2003</code>的FTP文件夹的设定和命名有相当严格的规范。</p>
+<p>　　举个例子，如果你想为用户abc在<code>server 2003</code>下开通一个<code>IIS-FTP</code>服务目录设定为<code>E：\\FTP</code>里。除了安装IIS和FTP组件及相关配置正确之外，你还应该在FTP文件夹中建立一个子文件夹。命名为<code>LocalUser</code>，然后在LocalUser文件夹中再建立一个子文件夹，命名为abc，即你要开通FTP服务的用户名。</p>
+<p>　　这样当用户<code>abc</code>运行<code>FTP</code>服务登录到<code>server2003</code>时，会自动进入到<code>E：\\FTP\\LocalUser\\abc</code>文件夹目录下，这也就很好解释为什么最初会报出<code>530 User用户名 cannot log in home directory inaccessible</code>的错误了。因为不这样设定的话<code>E：\\FTP\\LocalUser\\abc</code>的目录根本就不存在。</p>
+<p>　　另外如果我们打算允许FTP站点提供匿名登录的话，还应在<code>LocalUser</code>目录下另建一个public的子目录。同理，匿名登录的用户将自动进入到<code>D：\\FTP\\LocalUser\\public</code>目录中。</p>
+<p>　　这样设置对一个服务器多个人使用的情况下非常有用，除此之外，你还可以在IIS中设置每个FTP对应的网站的流量，连接数等等限制来合理分配服务器资源。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2018/01/09/IIS-FTP连接报530User-cannot-logged-in/" data-id="cjfqgjhri00019o6nbt4rw6bc" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-FTP端口范围修改" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/26/FTP端口范围修改/" class="article-date">
+  <time datetime="2017-12-26T01:21:22.000Z" itemprop="datePublished">2017-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/26/FTP端口范围修改/">FTP端口范围修改</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于云主机端口可使用范围 需要修改PureFtpd的端口范围 默认的 20000:20500  修改为  20000 20030<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#</div><div class="line"># pure-ftpd.conf</div><div class="line"># http://www.wdlinux.cn</div><div class="line">Bind			21</div><div class="line">ChrootEveryone              yes</div><div class="line">BrokenClientsCompatibility  no</div><div class="line">MaxClientsNumber            50</div><div class="line">Daemonize                   yes</div><div class="line">MaxClientsPerIP             8</div><div class="line">VerboseLog                  no</div><div class="line">DisplayDotFiles             yes</div><div class="line">AnonymousOnly               no</div><div class="line">NoAnonymous                 yes</div><div class="line">SyslogFacility              ftp</div><div class="line">DontResolve                 yes</div><div class="line">MaxIdleTime                 15</div><div class="line">LimitRecursion              10000 8</div><div class="line">AnonymousCanCreateDirs      no</div><div class="line">MaxLoad                     4</div><div class="line">AntiWarez                   yes</div><div class="line">Umask                       133:022</div><div class="line">MinUID                      100</div><div class="line">AllowUserFXP                no</div><div class="line">AllowAnonymousFXP           no</div><div class="line">ProhibitDotFilesWrite       no</div><div class="line">ProhibitDotFilesRead        no</div><div class="line">AutoRename                  no</div><div class="line">AnonymousCantUpload         no</div><div class="line">MaxDiskUsage               99</div><div class="line">CustomerProof              yes</div><div class="line">AllowOverwrite             on</div><div class="line">AllowStoreRestart          on</div><div class="line">UnixAuthentication          yes</div><div class="line">PassivePortRange            20000 20030</div><div class="line">PureDB			/www/wdlinux/pureftpd/etc/pureftpd.pdb</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2017/12/26/FTP端口范围修改/" data-id="cjfqgjhsp00069o6nk37k0bc8" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-快商通代码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/21/快商通代码/" class="article-date">
+  <time datetime="2017-12-21T06:42:13.000Z" itemprop="datePublished">2017-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/21/快商通代码/">快商通代码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> openZoosUrl = <span class="function"><span class="keyword">function</span>(<span class="params">text, isMobile</span>) </span>&#123;</div><div class="line">    <span class="comment">//请替换成"电脑生成代码 - 链接地址" 中的链接地址,不要去其他地方复制</span></div><div class="line">    ksChatLink = <span class="string">'https://hztk5.kuaishang.cn/bs/im.htm?cas=59076___799223&amp;fi=67689&amp;ism=1'</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 若强行打开新窗口,则放开设置,不设置则手机不打开新窗口,pc打开新窗口,此设置只对当前自定义事件有效</div><div class="line">     * 若想全局生效,包括快商通默认的打开聊天窗口事件,则将此变量ksUserDefinedOpenNewChatWin定义在ks.j前即可</div><div class="line">     */</div><div class="line">    <span class="keyword">var</span> ksUserDefinedOpenNewChatWin = <span class="literal">true</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">checkQueryString</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!a) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + b + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>, <span class="string">"i"</span>).test(a)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getQueryString</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> c = a.indexOf(<span class="string">'?'</span>);</div><div class="line">        <span class="keyword">if</span> (c == <span class="number">-1</span>) <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">        a = a.substr(c + <span class="number">1</span>, a.length);</div><div class="line">        <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(^|&amp;)"</span> + b + <span class="string">"=([^&amp;]*)(&amp;|$)"</span>, <span class="string">"i"</span>);</div><div class="line">        <span class="keyword">var</span> r = a.match(d);</div><div class="line">        <span class="keyword">if</span> (r != <span class="literal">null</span>) <span class="keyword">return</span> <span class="built_in">unescape</span>(r[<span class="number">2</span>]);</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (isMobile &amp;&amp; ksChatLink.indexOf(<span class="string">'ism=1'</span>) == <span class="number">-1</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (ksChatLink.indexOf(<span class="string">'?'</span>) == <span class="number">-1</span>) &#123;</div><div class="line">            ksChatLink += <span class="string">'?ism=1'</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            ksChatLink += <span class="string">'&amp;ism=1'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> openNewChatWin, _ksChatLink = ksChatLink;</div><div class="line">    <span class="keyword">var</span> localArr = ksChatLink.split(<span class="string">"?"</span>);</div><div class="line">    localArr.push(<span class="string">""</span>);</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> ksUserDefinedOpenNewChatWin != <span class="string">'undefined'</span> &amp;&amp; ksUserDefinedOpenNewChatWin == <span class="literal">true</span>) &#123;</div><div class="line">        openNewChatWin = <span class="literal">true</span></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (checkQueryString(localArr[<span class="number">1</span>], <span class="string">'ism'</span>)) &#123;</div><div class="line">        openNewChatWin = <span class="literal">false</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        openNewChatWin = <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ksOpenLink</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> a = <span class="string">''</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">var</span> b = getQueryString(ksChatLink, <span class="string">'cas'</span>);</div><div class="line">            <span class="keyword">if</span> (b) &#123;</div><div class="line">                <span class="keyword">var</span> c = <span class="string">''</span>;</div><div class="line">                <span class="keyword">var</span> d = <span class="built_in">document</span>.cookie.match(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'(^| )'</span> + b + <span class="string">'_KS_'</span> + b + <span class="string">'=([^;]*)(;|$)'</span>));</div><div class="line">                <span class="keyword">if</span> (d != <span class="literal">null</span>) &#123;</div><div class="line">                    c = <span class="built_in">unescape</span>(d[<span class="number">2</span>])</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (c) &#123;</div><div class="line">                    a += <span class="string">'&amp;vi='</span> + c</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (e) &#123;&#125;</div><div class="line">        <span class="keyword">var</span> f = <span class="string">""</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (opener.document.referrer.length &gt; <span class="number">0</span>) &#123;</div><div class="line">                f = opener.document.referrer</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">            f = <span class="built_in">document</span>.referrer</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!f || f.length == <span class="number">0</span>) &#123;</div><div class="line">            f = <span class="built_in">document</span>.referrer</div><div class="line">        &#125;</div><div class="line">        a += <span class="string">'&amp;dp='</span> + <span class="built_in">encodeURIComponent</span>(<span class="built_in">window</span>.location.href);</div><div class="line">        <span class="keyword">if</span> (f) a += <span class="string">'&amp;ref='</span> + <span class="built_in">encodeURIComponent</span>(f);</div><div class="line">        <span class="keyword">if</span> (text) a += <span class="string">'&amp;sText='</span> + <span class="built_in">encodeURIComponent</span>(text);</div><div class="line">        <span class="keyword">if</span> (ksChatLink.indexOf(<span class="string">'?'</span>) == <span class="number">-1</span>) &#123;</div><div class="line">            a = <span class="string">'?'</span> + a.substring(<span class="number">1</span>)</div><div class="line">        &#125;</div><div class="line">        ksChatLink += a;</div><div class="line">        <span class="keyword">if</span> (!openNewChatWin) &#123;</div><div class="line">            <span class="built_in">window</span>.location.href = ksChatLink</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">var</span> g = <span class="built_in">window</span>.open(ksChatLink, <span class="string">'_blank'</span>);</div><div class="line">            <span class="keyword">if</span> (g) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    g.focus()</div><div class="line">                &#125; <span class="keyword">catch</span> (e) &#123;&#125;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="built_in">window</span>.location.href = ksChatLink</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> KS != <span class="string">'undefined'</span>) &#123;</div><div class="line">        <span class="keyword">var</span> p = &#123;&#125;;</div><div class="line">        <span class="keyword">if</span> (text) p[<span class="string">'sText'</span>] = text;</div><div class="line">        <span class="keyword">if</span> (openNewChatWin) p[<span class="string">'oTarget'</span>] = <span class="string">'_blank'</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> KS.openChatWin == <span class="string">'function'</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (openNewChatWin &amp;&amp; _ksChatLink.indexOf(<span class="string">'kuaishang'</span>) == <span class="number">-1</span> &amp;&amp; !KS.customUrl) &#123;</div><div class="line">                    KS.customUrl = _ksChatLink</div><div class="line">                &#125;</div><div class="line">                KS.openChatWin(p)</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> KS.openChatLink == <span class="string">'function'</span>) &#123;</div><div class="line">                KS.openChatLink(p)</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                ksOpenLink()</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">            ksOpenLink()</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        ksOpenLink()</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2017/12/21/快商通代码/" data-id="cjfqgjhug00189o6n8yyp4xse" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-解决wdCP升级至v3-2-19-20171026-打不开，显示空白问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/15/解决wdCP升级至v3-2-19-20171026-打不开，显示空白问题/" class="article-date">
+  <time datetime="2017-12-15T01:25:00.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/15/解决wdCP升级至v3-2-19-20171026-打不开，显示空白问题/">解决wdCP升级至v3.2.19(20171026) 打不开，显示空白问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="升级wdCP到v3-2-19-20171026-，打不开管理后台，使用以下命令重启："><a href="#升级wdCP到v3-2-19-20171026-，打不开管理后台，使用以下命令重启：" class="headerlink" title="升级wdCP到v3.2.19(20171026)，打不开管理后台，使用以下命令重启："></a>升级wdCP到v3.2.19(20171026)，打不开管理后台，使用以下命令重启：</h4><p><code>sh /www/wdlinux/wdcp/shell/cr7.sh &amp;&amp; service wdcp restart</code></p>
+<h4 id="执行结果："><a href="#执行结果：" class="headerlink" title="执行结果："></a>执行结果：</h4><p><code>Restarting wdcp (via systemctl):                           [  OK  ]</code></p>
+<p>表示重启成功，刷新即可打开登陆页面。</p>
+<p>注：直接使用service wdapache start|stop|restart命令，经测试无效。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2017/12/15/解决wdCP升级至v3-2-19-20171026-打不开，显示空白问题/" data-id="cjfqgjhwn002o9o6nen5ocmfn" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wdcp/">wdcp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-wdcp环境php安装yaf扩展" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/07/wdcp环境php安装yaf扩展/" class="article-date">
+  <time datetime="2017-02-07T08:27:00.000Z" itemprop="datePublished">2017-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/yaf/">yaf</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/07/wdcp环境php安装yaf扩展/">wdcp环境php安装yaf扩展</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>CentOS release 6.5 (Final) 64位</code><br><code>wdCP v3.0.8</code></p>
+<h3 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h3><p>确定系统已经安装了gcc、gcc-c++、make、automake、autoconf等依赖库，如果之前装好了PHP那么这些依赖应该都有了，推荐用yum管理安装php环境。</p>
+<p>可以获取到yaf包的途径：</p>
+<p>1 Yaf其实算是PHP官方的一个扩展，我们可以直接在PHP官网下载。 <a href="http://pecl.php.NET/package/yaf" target="_blank" rel="external">http://pecl.php.NET/package/yaf</a></p>
+<p>2 Git 仓库 <a href="https://github.com/laruence/php-yaf" target="_blank" rel="external">https://github.com/laruence/php-yaf</a></p>
+<p>yaf官方文档 ：<a href="http://www.laruence.com/manual/" target="_blank" rel="external">http://www.laruence.com/manual/</a></p>
+<p>安装：</p>
+<p>从官网下载的新一点的版本会比较稳定，安装也会比较顺畅，老版本有时候安到半截如果你的环境配的不全或者路径有问题，需要做一些调试,，我们这里下载官网的最新2.3.3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget http://pecl.php.net/get/yaf-2.3.3.tgz</div><div class="line">tar -zxvf yaf-2.3.3* &amp;&amp; cd yaf-2.3.3</div><div class="line">/www/wdlinux/php/bin/phpize</div><div class="line">./configure --with-php-config=/usr/bin/php-config &amp;&amp; make &amp;&amp; make test  </div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>期间安装2.2.9版本出现 yaf_config.lo 错误<br><code>/yaf-2.2.9/yaf_config.c:227: error: ?.S_CONSTANT_ARRAY?.undeclared (first use in this function)
+make: *** [yaf_config.lo] Error</code></p>
+<p>3.0.4版本也出现错误,不知是没有 make &amp;&amp; make test 还是版本的原因。</p>
+<p>不过2.3.3安装成功了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2017/02/07/wdcp环境php安装yaf扩展/" data-id="cjfqgjhto000p9o6ni5q0pyxq" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-解决Firefox不信任StartSSL证书问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/04/解决Firefox不信任StartSSL证书问题/" class="article-date">
@@ -115,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2017/02/04/解决Firefox不信任StartSSL证书问题/" data-id="ciyv8whg9001c266nzblsc7j8" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2017/02/04/解决Firefox不信任StartSSL证书问题/" data-id="cjfqgjhwh002m9o6nsd2jiq4h" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/firefox/">firefox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sec-error-revoked-certificate/">sec_error_revoked_certificate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/startssl/">startssl</a></li></ul>
@@ -163,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2017/02/04/elasticsearch写入数据存储过程/" data-id="ciyv8whes000a266nxnfecfeg" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2017/02/04/elasticsearch写入数据存储过程/" data-id="cjfqgjhsz000a9o6nggxp2bio" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li></ul>
@@ -216,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/" data-id="ciyv8whey000e266ne8om7b05" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/" data-id="cjfqgjht1000c9o6ncsz7n9a3" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -257,7 +468,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/" data-id="ciyv8whdd0002266nbo3a0fv6" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/" data-id="cjfqgjhr800009o6nus9ewa63" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -301,262 +512,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/11/11/facebook登录-在-php-框架-slim里的实现/" data-id="ciyv8whev000c266nx79tgs2b" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/11/11/facebook登录-在-php-框架-slim里的实现/" data-id="cjfqgjhss00079o6na4hdvk83" class="article-share-link">Delen</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-apache-tomcat7-0-win7上的安装和启动" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/29/apache-tomcat7-0-win7上的安装和启动/" class="article-date">
-  <time datetime="2016-09-29T00:36:09.000Z" itemprop="datePublished">2016-09-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/29/apache-tomcat7-0-win7上的安装和启动/">spring jdbc 操作 mysql</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>build.gradle</code><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">buildscript</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        mavenCentral()</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">dependencies</span> &#123;</div><div class="line">        <span class="keyword">classpath</span>(<span class="string">"org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">apply plugin: <span class="string">'java'</span></div><div class="line">apply plugin: <span class="string">'eclipse'</span></div><div class="line">apply plugin: <span class="string">'idea'</span></div><div class="line">apply plugin: <span class="string">'spring-boot'</span></div><div class="line"></div><div class="line">jar &#123;</div><div class="line">    baseName = <span class="string">'gs-serving-web-content'</span></div><div class="line">    version =  <span class="string">'0.1.0'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">repositories</span> &#123;</div><div class="line">    mavenCentral()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">sourceCompatibility</span> = <span class="number">1.8</span></div><div class="line"><span class="keyword">targetCompatibility</span> = <span class="number">1.8</span></div><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span>(<span class="string">"org.springframework.boot:spring-boot-starter-thymeleaf"</span>)</div><div class="line">    <span class="keyword">compile</span>(<span class="string">"org.springframework:spring-jdbc"</span>)</div><div class="line">    <span class="keyword">compile</span>(<span class="string">"mysql:mysql-connector-java:5.1.24"</span>)</div><div class="line">    <span class="keyword">compile</span>(<span class="string">"org.springframework.boot:spring-boot-devtools"</span>)</div><div class="line">    testCompile(<span class="string">"junit:junit"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/29/apache-tomcat7-0-win7上的安装和启动/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/29/apache-tomcat7-0-win7上的安装和启动/" data-id="ciyv8whep0008266ngs8ym82j" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Serving-Web-Content-with-Spring-MVC" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/28/Serving-Web-Content-with-Spring-MVC/" class="article-date">
-  <time datetime="2016-09-28T13:50:00.000Z" itemprop="datePublished">2016-09-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/28/Serving-Web-Content-with-Spring-MVC/">Serving Web Content with Spring MVC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://spring.io/guides/gs/serving-web-content/">https://spring.io/guides/gs/serving-web-content/</a></p>
-<p><code>gradle</code>用着确实比<code>maven</code>6很多，该demo主要使用<code>spring boot</code> 和 <code>thymeleaf</code>.本人系统环境 <code>win7</code></p>
-<ul>
-<li>IntelliJ IDEA</li>
-<li>JDK 1.8</li>
-<li>Gradle3.1</li>
-</ul>
-<h3 id="代码效果预览"><a href="#代码效果预览" class="headerlink" title="代码效果预览"></a>代码效果预览</h3><ul>
-<li>使用git下载源码：<code>git clone https://github.com/spring-guides/gs-serving-web-content.git</code></li>
-<li><code>cd gs-serving-web-content\complete</code></li>
-<li><code>gradle bootRun</code> 或 <code>gradle build</code>之后运行<code>java -jar build/libs/gs-serving-web-content-0.1.0.jar</code>皆可
-        
-          <p class="article-more-link">
-            <a href="/2016/09/28/Serving-Web-Content-with-Spring-MVC/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/28/Serving-Web-Content-with-Spring-MVC/" data-id="ciyv8whe20006266n18lg85q7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-99-的人都理解错了http的get和post的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/25/99-的人都理解错了http的get和post的区别/" class="article-date">
-  <time datetime="2016-09-25T01:37:00.000Z" itemprop="datePublished">2016-09-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/http/">http</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/25/99-的人都理解错了http的get和post的区别/">99%的人都理解错了http的get和post的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>GET和POST是HTTP请求的两种基本方法，要说它们的区别，接触过WEB开发的人都能说出一二。</p>
-<p>最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。</p>
-<p>你可能自己写过无数个GET和POST请求，或者已经看过很多权威网站总结出的他们的区别，你非常清楚知道什么时候该用什么。</p>
-<p>当你在面试中被问到这个问题，你的内心充满了自信和喜悦。</p>
-<p><img src="/2016/09/7033e829adefa33d1a660664ac93e600.png" alt="so easy"></p>
-<p>你轻轻松松的给出了一个“标准答案”：</p>
-<pre><code>GET在浏览器回退时是无害的，而POST会再次提交请求。
-GET产生的URL地址可以被Bookmark，而POST不可以。
-GET请求会被浏览器主动cache，而POST不会，除非手动设置。
-GET请求只能进行url编码，而POST支持多种编码方式。
-GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。
-GET请求在URL中传送的参数是有长度限制的，而POST么有。
-对参数的数据类型，GET只接受ASCII字符，而POST没有限制。
-GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。
-GET参数通过URL传递，POST放在Request body中。
-</code></pre><p>（本标准答案参考自w3schools）</p>
-<p>“很遗憾，这不是我们要的回答！”</p>
-<p><img src="/2016/09/f0fd4334d974db6df8ef1e89d016babe.png" alt="我的内心是崩溃的"></p>
-<p>请告诉我真相。。。<br>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/25/99-的人都理解错了http的get和post的区别/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/25/99-的人都理解错了http的get和post的区别/" data-id="ciyv8whd10000266npc9uuyvq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/get/">get</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/post/">post</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-知乎回答收藏" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/19/知乎回答收藏/" class="article-date">
-  <time datetime="2016-09-19T07:06:00.000Z" itemprop="datePublished">2016-09-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/19/知乎回答收藏/">知乎回答收藏</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>作者：冷哲<br>链接：<a href="https://www.zhihu.com/question/39461277/answer/81603550">https://www.zhihu.com/question/39461277/answer/81603550</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。<br>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/19/知乎回答收藏/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/19/知乎回答收藏/" data-id="ciyv8whg60017266nh8w8ist9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-鼠标滚动mousewheel和touch滑动全屏切换效果" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/" class="article-date">
-  <time datetime="2016-09-17T07:49:00.000Z" itemprop="datePublished">2016-09-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/javascript/">javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/">鼠标滚动mousewheel和touch滑动全屏切换效果</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="根据鼠标滚动方向或者手机滑动方向然后切换上一屏或下一屏。感觉类似翻页。"><a href="#根据鼠标滚动方向或者手机滑动方向然后切换上一屏或下一屏。感觉类似翻页。" class="headerlink" title="根据鼠标滚动方向或者手机滑动方向然后切换上一屏或下一屏。感觉类似翻页。"></a>根据鼠标滚动方向或者手机滑动方向然后切换上一屏或下一屏。感觉类似翻页。</h3><p><img src="/2016/2/demo.gif" alt="效果图"></p>
-<p>兼容火狐、360极速和兼容模式…安卓手机360浏览器测试也正常</p>
-<p><a href="/2016/2/index4.html">效果页面</a></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/09/17/鼠标滚动mousewheel和touch滑动全屏切换效果/" data-id="ciyv8whgi001f266nntur3gep" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/h5/">h5</a></li></ul>
-
     </footer>
   </div>
   
@@ -567,7 +525,7 @@ GET参数通过URL传递，POST放在Request body中。
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -575,9 +533,9 @@ GET参数通过URL传递，POST放在Request body中。
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Categorieën</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/https/">https</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/https/">https</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/yaf/">yaf</a></li></ul>
     </div>
   </div>
 
@@ -585,9 +543,9 @@ GET参数通过URL传递，POST放在Request body中。
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firefox/">firefox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/get/">get</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sec-error-revoked-certificate/">sec_error_revoked_certificate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startssl/">startssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firefox/">firefox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/get/">get</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sec-error-revoked-certificate/">sec_error_revoked_certificate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startssl/">startssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wdcp/">wdcp</a></li></ul>
     </div>
   </div>
 
@@ -597,16 +555,16 @@ GET参数通过URL传递，POST放在Request body中。
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/firefox/" style="font-size: 10px;">firefox</a> <a href="/tags/get/" style="font-size: 10px;">get</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sec-error-revoked-certificate/" style="font-size: 10px;">sec_error_revoked_certificate</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/startssl/" style="font-size: 10px;">startssl</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a>
+      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/firefox/" style="font-size: 10px;">firefox</a> <a href="/tags/get/" style="font-size: 10px;">get</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sec-error-revoked-certificate/" style="font-size: 10px;">sec_error_revoked_certificate</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/startssl/" style="font-size: 10px;">startssl</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a> <a href="/tags/wdcp/" style="font-size: 10px;">wdcp</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
     </div>
   </div>
 
@@ -614,28 +572,28 @@ GET参数通过URL传递，POST放在Request body中。
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/02/04/解决Firefox不信任StartSSL证书问题/">解决Firefox不信任StartSSL证书问题</a>
+            <a href="/2018/01/09/IIS-FTP连接报530User-cannot-logged-in/">IIS FTP连接报530User cannot logged in</a>
           </li>
         
           <li>
-            <a href="/2017/02/04/elasticsearch写入数据存储过程/">elasticsearch写入数据存储过程</a>
+            <a href="/2017/12/26/FTP端口范围修改/">FTP端口范围修改</a>
           </li>
         
           <li>
-            <a href="/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/">前端优化系列之一：DNS预获取 DNS Prefetch 提升页面载入速度</a>
+            <a href="/2017/12/21/快商通代码/">快商通代码</a>
           </li>
         
           <li>
-            <a href="/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/">AngularJS 中使用Swiper制作滚动图不能滑动 </a>
+            <a href="/2017/12/15/解决wdCP升级至v3-2-19-20171026-打不开，显示空白问题/">解决wdCP升级至v3.2.19(20171026) 打不开，显示空白问题</a>
           </li>
         
           <li>
-            <a href="/2016/11/11/facebook登录-在-php-框架-slim里的实现/">facebook登录 在 php 框架 slim里的实现</a>
+            <a href="/2017/02/07/wdcp环境php安装yaf扩展/">wdcp环境php安装yaf扩展</a>
           </li>
         
       </ul>
@@ -650,7 +608,7 @@ GET参数通过URL传递，POST放在Request body中。
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 wcj2020<br>
+      &copy; 2018 wcj2020<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
       备案号:<a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备16051142号</a>
     </div>

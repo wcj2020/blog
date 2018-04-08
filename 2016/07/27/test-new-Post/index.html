@@ -14,7 +14,7 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
 <meta property="og:description" content="假设hexo已经搭建完成,并且hexo server可以正常运行
 nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;server 127.0.0.1:4000;&amp;#125;   server &amp;#123;listen       80;server_name  blog.wangchunjian.win;location /">
 <meta property="og:image" content="http://img.wxwztj.com/ckfinder/userfiles/files/nohup-hexo.jpg">
-<meta property="og:updated_time" content="2016-09-18T05:08:34.686Z">
+<meta property="og:updated_time" content="2018-04-08T06:55:37.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo搭建博客 nginx代理nodejs">
 <meta name="twitter:description" content="假设hexo已经搭建完成,并且hexo server可以正常运行
@@ -99,7 +99,7 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
         <p>假设hexo已经搭建完成,并且<code>hexo server</code>可以正常运行</p>
 <p>nginx下站点配置文件<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">upstream</span> node_app &#123;</div><div class="line"><span class="attribute">server</span> <span class="number">127.0.0.1:4000</span>;</div><div class="line">&#125;</div><div class="line">   </div><div class="line"><span class="section">server</span> &#123;</div><div class="line"><span class="attribute">listen</span>       <span class="number">80</span>;</div><div class="line"><span class="attribute">server_name</span>  blog.wangchunjian.win;</div><div class="line"></div><div class="line"><span class="attribute">location</span> / &#123;</div><div class="line">  <span class="attribute">proxy_pass</span> http://node_app;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="attribute">location</span> <span class="regexp">~* .(gif|jpg|jpeg|png|css|js|ico)$</span> &#123;</div><div class="line">  <span class="attribute">root</span> /www/web/nodejs/test/public;</div><div class="line">  <span class="attribute">expires</span> <span class="number">1h</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>使用<code>nohup</code>后台运行<code>hexo</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup hexo server &amp;</div></pre></td></tr></table></figure></p>
+<p>使用<code>nohup</code>后台运行<code>hexo</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd /www/web/nodejs/test</div><div class="line">nohup hexo server &amp; </div><div class="line">//如果不想输出任何信息</div><div class="line">nohup hexo server &gt;/dev/null 2&gt;&amp;1 &amp;</div></pre></td></tr></table></figure></p>
 <p><img src="http://img.wxwztj.com/ckfinder/userfiles/files/nohup-hexo.jpg" alt="nohup command" title="nohup command"></p>
 <blockquote>
 <p>必须使用<code>exit</code>退出,不然nohup的session会中断</p>
@@ -110,7 +110,7 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://nodejs.wxwztj.com/2016/07/27/test-new-Post/" data-id="ciyv8whfo000s266n2trgunly" class="article-share-link">Share</a>
+      <a data-url="http://nodejs.wxwztj.com/2016/07/27/test-new-Post/" data-id="cjfqgjhts000t9o6ngjuroch8" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -122,7 +122,7 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
 <nav id="article-nav">
   
     <a href="/2016/07/27/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           slimframwork 使用 middleware缓存页面
@@ -142,9 +142,9 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Categorieën</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/https/">https</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css3/">css3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/elasticsearch/">elasticsearch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/https/">https</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/slim/">slim</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/yaf/">yaf</a></li></ul>
     </div>
   </div>
 
@@ -152,9 +152,9 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firefox/">firefox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/get/">get</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sec-error-revoked-certificate/">sec_error_revoked_certificate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startssl/">startssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aiohttp/">aiohttp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arp/">arp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/firefox/">firefox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/get/">get</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5/">h5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jinja2/">jinja2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/keep-alive/">keep-alive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metaclass/">metaclass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/middleware/">middleware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netsh/">netsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/orm/">orm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/post/">post</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sec-error-revoked-certificate/">sec_error_revoked_certificate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slim/">slim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startssl/">startssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wdcp/">wdcp</a></li></ul>
     </div>
   </div>
 
@@ -164,16 +164,16 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/firefox/" style="font-size: 10px;">firefox</a> <a href="/tags/get/" style="font-size: 10px;">get</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sec-error-revoked-certificate/" style="font-size: 10px;">sec_error_revoked_certificate</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/startssl/" style="font-size: 10px;">startssl</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a>
+      <a href="/tags/aiohttp/" style="font-size: 10px;">aiohttp</a> <a href="/tags/arp/" style="font-size: 10px;">arp</a> <a href="/tags/composer/" style="font-size: 10px;">composer</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/firefox/" style="font-size: 10px;">firefox</a> <a href="/tags/get/" style="font-size: 10px;">get</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 20px;">http</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jinja2/" style="font-size: 10px;">jinja2</a> <a href="/tags/keep-alive/" style="font-size: 10px;">keep-alive</a> <a href="/tags/metaclass/" style="font-size: 10px;">metaclass</a> <a href="/tags/middleware/" style="font-size: 10px;">middleware</a> <a href="/tags/netsh/" style="font-size: 10px;">netsh</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/orm/" style="font-size: 10px;">orm</a> <a href="/tags/post/" style="font-size: 10px;">post</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/sec-error-revoked-certificate/" style="font-size: 10px;">sec_error_revoked_certificate</a> <a href="/tags/slim/" style="font-size: 20px;">slim</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/startssl/" style="font-size: 10px;">startssl</a> <a href="/tags/thymeleaf/" style="font-size: 10px;">thymeleaf</a> <a href="/tags/wdcp/" style="font-size: 10px;">wdcp</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
     </div>
   </div>
 
@@ -181,28 +181,28 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/02/04/解决Firefox不信任StartSSL证书问题/">解决Firefox不信任StartSSL证书问题</a>
+            <a href="/2018/01/09/IIS-FTP连接报530User-cannot-logged-in/">IIS FTP连接报530User cannot logged in</a>
           </li>
         
           <li>
-            <a href="/2017/02/04/elasticsearch写入数据存储过程/">elasticsearch写入数据存储过程</a>
+            <a href="/2017/12/26/FTP端口范围修改/">FTP端口范围修改</a>
           </li>
         
           <li>
-            <a href="/2016/12/11/first-of-front-end-series-dns-prefetch-increase-load-speed/">前端优化系列之一：DNS预获取 DNS Prefetch 提升页面载入速度</a>
+            <a href="/2017/12/21/快商通代码/">快商通代码</a>
           </li>
         
           <li>
-            <a href="/2016/11/18/AngularJS-中使用Swiper制作滚动图不能滑动/">AngularJS 中使用Swiper制作滚动图不能滑动 </a>
+            <a href="/2017/12/15/解决wdCP升级至v3-2-19-20171026-打不开，显示空白问题/">解决wdCP升级至v3.2.19(20171026) 打不开，显示空白问题</a>
           </li>
         
           <li>
-            <a href="/2016/11/11/facebook登录-在-php-框架-slim里的实现/">facebook登录 在 php 框架 slim里的实现</a>
+            <a href="/2017/02/07/wdcp环境php安装yaf扩展/">wdcp环境php安装yaf扩展</a>
           </li>
         
       </ul>
@@ -217,7 +217,7 @@ nginx下站点配置文件1234567891011121314151617upstream node_app &amp;#123;s
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 wcj2020<br>
+      &copy; 2018 wcj2020<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
       备案号:<a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备16051142号</a>
     </div>
