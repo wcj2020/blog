@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nodejs.wxwztj.com/"/>
-  <updated>2018-01-09T08:12:52.642Z</updated>
+  <updated>2018-04-10T00:35:06.382Z</updated>
   <id>http://nodejs.wxwztj.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Laravel 5.6 study day 01</title>
+    <link href="http://nodejs.wxwztj.com/2018/04/08/Laravel-5-6-study-day-01/"/>
+    <id>http://nodejs.wxwztj.com/2018/04/08/Laravel-5-6-study-day-01/</id>
+    <published>2018-04-08T07:26:00.000Z</published>
+    <updated>2018-04-10T00:35:06.382Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h4><p>XAMPP <a href="https://www.apachefriends.org/zh_cn/index.html" target="_blank" rel="external">XAMPP for Windows 7.2.3 (PHP 7.2.3)下载地址</a></p>
+<p>Composer安装后 修改为国内镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">composer global require &quot;laravel/installer&quot;</div></pre></td></tr></table></figure>
+<p>由于墙的存在<br>执行命令  <code>laravel new blog</code><br>悲剧了，出现错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cURL error 7: Failed to connect to cabinet.laravel.com port 80: Timed out……</div></pre></td></tr></table></figure></p>
+<p>我们可以直接用 Composer 创建 Laravel 项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project --prefer-dist laravel/laravel blog</div></pre></td></tr></table></figure></p>
+<h6 id="laravel-生成-blog-的目录结构"><a href="#laravel-生成-blog-的目录结构" class="headerlink" title="laravel 生成 blog 的目录结构"></a>laravel 生成 blog 的目录结构</h6><p><img src="http://www2.wxwztj.com/uploads/1804/20180408155025_106.jpg" alt="laravel blog 目录结构" title="laravel blog 目录结构"><br>Xampp配置虚拟站点 <code>G:\xampp\apache\conf\extra\http-vhosts.conf</code> 文件添加下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">    DocumentRoot &quot;G:/xampp/htdocs/Laravel/blog/public&quot;</div><div class="line">    ServerName www.laravel.cc</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure></p>
+<p>重启<code>XAMPP</code>的<code>apache</code>服务<br><img src="http://www2.wxwztj.com/uploads/1804/20180408155318_385.jpg" alt="首页效果" title="首页效果"></p>
+<h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><p>由于你的环境中可能全局安装了<code>phpunit</code> 如果想调用Laravel自带的 需要使用<code>vendor\bin\phpunit</code>命令。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Create a test in the Feature directory...</span></div><div class="line">php artisan make:test UserTest</div><div class="line"></div><div class="line"><span class="comment">// Create a test in the Unit directory...</span></div><div class="line">php artisan make:test UserTest --unit</div><div class="line"></div><div class="line">G:\xampp\htdocs\Laravel\blog&gt;vendor\bin\phpunit -V</div><div class="line">PHPUnit <span class="number">7.1</span><span class="number">.1</span> by Sebastian</div><div class="line"></div><div class="line">unrecognized option -- V</div><div class="line"></div><div class="line">G:\xampp\htdocs\Laravel\blog&gt;phpunit -V</div><div class="line">PHPUnit <span class="number">3.7</span><span class="number">.21</span> by Sebastia</div><div class="line"></div><div class="line">unrecognized option -- V</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;配置环境&quot;&gt;&lt;a href=&quot;#配置环境&quot; class=&quot;headerlink&quot; title=&quot;配置环境&quot;&gt;&lt;/a&gt;配置环境&lt;/h4&gt;&lt;p&gt;XAMPP &lt;a href=&quot;https://www.apachefriends.org/zh_cn/index.html&quot;
+    
+    </summary>
+    
+    
+      <category term="laravel" scheme="http://nodejs.wxwztj.com/tags/laravel/"/>
+    
+      <category term="php7" scheme="http://nodejs.wxwztj.com/tags/php7/"/>
+    
+  </entry>
   
   <entry>
     <title>IIS FTP连接报530User cannot logged in</title>
@@ -45,14 +75,14 @@
     <link href="http://nodejs.wxwztj.com/2017/12/26/FTP%E7%AB%AF%E5%8F%A3%E8%8C%83%E5%9B%B4%E4%BF%AE%E6%94%B9/"/>
     <id>http://nodejs.wxwztj.com/2017/12/26/FTP端口范围修改/</id>
     <published>2017-12-26T01:21:22.000Z</published>
-    <updated>2017-12-26T01:23:16.170Z</updated>
+    <updated>2018-06-26T08:34:03.341Z</updated>
     
-    <content type="html"><![CDATA[<p>由于云主机端口可使用范围 需要修改PureFtpd的端口范围 默认的 20000:20500  修改为  20000 20030<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#</div><div class="line"># pure-ftpd.conf</div><div class="line"># http://www.wdlinux.cn</div><div class="line">Bind			21</div><div class="line">ChrootEveryone              yes</div><div class="line">BrokenClientsCompatibility  no</div><div class="line">MaxClientsNumber            50</div><div class="line">Daemonize                   yes</div><div class="line">MaxClientsPerIP             8</div><div class="line">VerboseLog                  no</div><div class="line">DisplayDotFiles             yes</div><div class="line">AnonymousOnly               no</div><div class="line">NoAnonymous                 yes</div><div class="line">SyslogFacility              ftp</div><div class="line">DontResolve                 yes</div><div class="line">MaxIdleTime                 15</div><div class="line">LimitRecursion              10000 8</div><div class="line">AnonymousCanCreateDirs      no</div><div class="line">MaxLoad                     4</div><div class="line">AntiWarez                   yes</div><div class="line">Umask                       133:022</div><div class="line">MinUID                      100</div><div class="line">AllowUserFXP                no</div><div class="line">AllowAnonymousFXP           no</div><div class="line">ProhibitDotFilesWrite       no</div><div class="line">ProhibitDotFilesRead        no</div><div class="line">AutoRename                  no</div><div class="line">AnonymousCantUpload         no</div><div class="line">MaxDiskUsage               99</div><div class="line">CustomerProof              yes</div><div class="line">AllowOverwrite             on</div><div class="line">AllowStoreRestart          on</div><div class="line">UnixAuthentication          yes</div><div class="line">PassivePortRange            20000 20030</div><div class="line">PureDB			/www/wdlinux/pureftpd/etc/pureftpd.pdb</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p>由于美团云主机端口可使用范围 需要<code>/www/wdlinux/etc/pure-ftpd.conf</code>修改PureFtpd的端口范围 默认的 20000:20500  修改为  20000 20030<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#</div><div class="line"># pure-ftpd.conf</div><div class="line"># http://www.wdlinux.cn</div><div class="line">Bind			21</div><div class="line">ChrootEveryone              yes</div><div class="line">BrokenClientsCompatibility  no</div><div class="line">MaxClientsNumber            50</div><div class="line">Daemonize                   yes</div><div class="line">MaxClientsPerIP             8</div><div class="line">VerboseLog                  no</div><div class="line">DisplayDotFiles             yes</div><div class="line">AnonymousOnly               no</div><div class="line">NoAnonymous                 yes</div><div class="line">SyslogFacility              ftp</div><div class="line">DontResolve                 yes</div><div class="line">MaxIdleTime                 15</div><div class="line">LimitRecursion              10000 8</div><div class="line">AnonymousCanCreateDirs      no</div><div class="line">MaxLoad                     4</div><div class="line">AntiWarez                   yes</div><div class="line">Umask                       133:022</div><div class="line">MinUID                      100</div><div class="line">AllowUserFXP                no</div><div class="line">AllowAnonymousFXP           no</div><div class="line">ProhibitDotFilesWrite       no</div><div class="line">ProhibitDotFilesRead        no</div><div class="line">AutoRename                  no</div><div class="line">AnonymousCantUpload         no</div><div class="line">MaxDiskUsage               99</div><div class="line">CustomerProof              yes</div><div class="line">AllowOverwrite             on</div><div class="line">AllowStoreRestart          on</div><div class="line">UnixAuthentication          yes</div><div class="line">PassivePortRange            20000 20030</div><div class="line">PureDB			/www/wdlinux/pureftpd/etc/pureftpd.pdb</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;由于云主机端口可使用范围 需要修改PureFtpd的端口范围 默认的 20000:20500  修改为  20000 20030&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;d
+      &lt;p&gt;由于美团云主机端口可使用范围 需要&lt;code&gt;/www/wdlinux/etc/pure-ftpd.conf&lt;/code&gt;修改PureFtpd的端口范围 默认的 20000:20500  修改为  20000 20030&lt;br&gt;&lt;figure class=&quot;highligh
     
     </summary>
     
@@ -781,72 +811,6 @@ GET参数通过URL传递，POST放在Request body中。
       <category term="http" scheme="http://nodejs.wxwztj.com/tags/http/"/>
     
       <category term="keep-alive" scheme="http://nodejs.wxwztj.com/tags/keep-alive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python使用aiohttp异步框架编写web 并部署到centos上</title>
-    <link href="http://nodejs.wxwztj.com/2016/09/13/%E4%BD%BF%E7%94%A8aiohttp%E5%BC%82%E6%AD%A5%E6%A1%86%E6%9E%B6%E7%BC%96%E5%86%99web/"/>
-    <id>http://nodejs.wxwztj.com/2016/09/13/使用aiohttp异步框架编写web/</id>
-    <published>2016-09-13T00:40:00.000Z</published>
-    <updated>2016-09-19T06:17:24.072Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>web框架使用<code>aiohttp</code>,模板引擎<code>jinja2</code>,数据库操作使用<code>aiomysql</code>稍作封装的一个<code>ORM</code>(廖雪峰的教程上提供的 <a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014323389656575142d0bcfeec434e9639a80d3684a7da000" target="_blank" rel="external">编写ORM</a>)</p>
-<a id="more"></a>
-<h3 id="安装python3-5-2"><a href="#安装python3-5-2" class="headerlink" title="安装python3.5.2"></a>安装python3.5.2</h3><p><code>centos6.4</code>上自带了2.6的Python,YUM命令会依赖python 2.X，下面是安装python 3.5.X 的步骤</p>
-<ul>
-<li>wget –no-check-certificate <a href="http://mirrors.sohu.com/python/3.5.2/Python-3.5.2.tgz" target="_blank" rel="external">http://mirrors.sohu.com/python/3.5.2/Python-3.5.2.tgz</a></li>
-<li>tar -zxvf Python-3.5.2.tgz</li>
-<li>cd Python-3.5.2</li>
-<li>./configure –prefix=/usr/local/python3.5 –enable-shared</li>
-<li>make &amp;&amp; make install</li>
-<li>ln -s /usr/local/python3.5/bin/python3 /usr/bin/python3</li>
-<li>此时运行python3命令的话会报错，缺少.so文件，我们需要进行如下操作</li>
-<li>cp -R /usr/local/python3.5/lib/* /usr/lib64/</li>
-</ul>
-<blockquote>
-<p>安装python3.5.2的时候,会自动把<code>setuptools</code>和<code>pip</code>一起安装了</p>
-</blockquote>
-<h3 id="依赖库"><a href="#依赖库" class="headerlink" title="依赖库"></a>依赖库</h3><ul>
-<li>/usr/bin/python3 -m pip install aiohttp_jinja2 –trusted-host pypi.douban.com</li>
-<li>/usr/bin/python3 -m pip install aiomysql –trusted-host * pypi.douban.com</li>
-<li>/usr/bin/python3 -m pip install aiohttp_session –trusted-host pypi.douban.com</li>
-<li>/usr/bin/python3 -m pip install cryptography –trusted-host pypi.douban.com</li>
-<li>/usr/bin/python3 -m pip install –upgrade pip –trusted-host pypi.douban.com</li>
-</ul>
-<blockquote>
-<p>系统默认的python版本依然是2.6,运行pip 带上python3的路径即可。另外搜狐的镜像和豆瓣的资源，速度确实快。。。<code>aiohttp_session</code>会依赖<code>cryptography</code>库</p>
-</blockquote>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>将编辑好的代码上传到服务器,<code>Xshell</code> 进入 <code>www</code> 目录,使用<code>nohup</code>命令后台运行..</p>
-<ul>
-<li><code>nohup /usr/bin/python3 app.py &amp;</code></li>
-<li><code>exit</code><h4 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">upstream</span> python_app &#123;<span class="attribute">server</span> <span class="number">127.0.0.1:9000</span>;&#125;   </div><div class="line"><span class="section">server</span> &#123;</div><div class="line">  <span class="attribute">listen</span>       <span class="number">80</span>;</div><div class="line">  <span class="attribute">server_name</span>  test.wxwztj.com;</div><div class="line"></div><div class="line">  <span class="attribute">location</span> / &#123;</div><div class="line">  <span class="attribute">proxy_pass</span> http://python_app;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="attribute">location</span> <span class="regexp">~* .(gif|jpg|jpeg|png|css|js|ico)$</span> &#123;</div><div class="line">  <span class="attribute">root</span> /www/web/awesome-python3-webapp/www;</div><div class="line">  <span class="attribute">expires</span> <span class="number">1h</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>必须使用<code>exit</code>退出,直接断开或关闭Xshell,<code>nohup</code>的这条后台进程会挂掉。。。<br><code>nohup /usr/bin/python3 test.py &gt;/dev/null 2&gt;&amp;1 &amp;</code> 如果不想输出任何信息，可以在<code>nohup command</code> 后面加上<code>&gt;/dev/null 2&gt;&amp;1</code>,最后末尾加上<code>&amp;</code>结束,只输出错误日志并指定错误输出文件<code>nohup ./program &gt;/dev/null 2&gt;log &amp;</code> 文件名缺省则默认为<code>nohup.out</code>.</p>
-</blockquote>
-<p>界面使用<code>Uikit</code>和<code>Vue.js</code>.Vue的绑定感觉和Angularjs相似,<code>aiohttp</code>也可以编写<code>middleware</code>实现错误处理、验证登录、控制访问权限等。</p>
-<h2 id="网站最后效果展示"><a href="#网站最后效果展示" class="headerlink" title="网站最后效果展示"></a><a href="http://test.wxwztj.com/" target="_blank" rel="external">网站最后效果展示</a></h2><h2 id="代码下载"><a href="#代码下载" class="headerlink" title="代码下载"></a><a href="/2016/awesome-python3-webapp.zip">代码下载</a></h2><p><code>test.py</code>是入口文件,<code>app.py</code>以及其他文件是廖老师的demo。</p>
-<p><code>orm</code>想使用<code>SQLAlchemy</code>异步编程的话,只能使用<code>aiomysql.sa</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="keyword">import</span> sqlalchemy <span class="keyword">as</span> sa</div><div class="line"><span class="keyword">from</span> sqlalchemy.types <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> sqlalchemy.sql <span class="keyword">import</span> func</div><div class="line"><span class="keyword">import</span> time,uuid,hashlib</div><div class="line"></div><div class="line"><span class="keyword">from</span> aiomysql.sa <span class="keyword">import</span> create_engine</div><div class="line"></div><div class="line"></div><div class="line">metadata=sa.MetaData()</div><div class="line"></div><div class="line"></div><div class="line">users = sa.Table(<span class="string">'users'</span>, metadata,</div><div class="line">               sa.Column(<span class="string">'id'</span>, Integer, primary_key=<span class="keyword">True</span>),</div><div class="line">               sa.Column(<span class="string">'email'</span>,String(<span class="number">50</span>)),</div><div class="line">               sa.Column(<span class="string">'passwd'</span>,String(<span class="number">50</span>)),</div><div class="line">               sa.Column(<span class="string">'image'</span>,String(<span class="number">500</span>)),</div><div class="line">               sa.Column(<span class="string">'admin'</span>,BOOLEAN),</div><div class="line">               sa.Column(<span class="string">'name'</span>, String(<span class="number">255</span>)),</div><div class="line">               sa.Column(<span class="string">'created_at'</span>,FLOAT())</div><div class="line">                 )</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">next_id</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'%015d%s000'</span> % (int(time.time() * <span class="number">1000</span>),uuid.uuid4().hex)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">pwd_user</span><span class="params">(id,passwd)</span>:</span></div><div class="line">    sha1 = hashlib.sha1()</div><div class="line">    sha1.update(id.encode(<span class="string">'utf-8'</span>))</div><div class="line">    sha1.update(<span class="string">b':'</span>)</div><div class="line">    sha1.update(passwd.encode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">return</span> sha1.hexdigest()</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@asyncio.coroutine</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_pool</span><span class="params">(loop,**kw)</span>:</span></div><div class="line">    <span class="keyword">global</span> __pool</div><div class="line">    __pool = <span class="keyword">yield</span> <span class="keyword">from</span> create_engine(</div><div class="line">        host = kw.get(<span class="string">'host'</span>,<span class="string">'127.0.0.1'</span>),</div><div class="line">        port = kw.get(<span class="string">'port'</span>,<span class="number">3306</span>),</div><div class="line">        user = kw[<span class="string">'user'</span>],</div><div class="line">        password = kw[<span class="string">'password'</span>],</div><div class="line">        db = kw[<span class="string">'db'</span>],</div><div class="line">        charset = kw.get(<span class="string">'charset'</span>,<span class="string">'utf8'</span>),</div><div class="line">        autocommit = kw.get(<span class="string">'autocommit'</span>,<span class="keyword">True</span>),</div><div class="line">        maxsize = kw.get(<span class="string">'maxsize'</span>,<span class="number">10</span>),</div><div class="line">        minsize = kw.get(<span class="string">'minsize'</span>,<span class="number">1</span>),</div><div class="line">        loop = loop</div><div class="line">    )</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@asyncio.coroutine</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">go</span><span class="params">(in_loop)</span>:</span></div><div class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> create_pool(in_loop,user=<span class="string">'root'</span>,password=<span class="string">'root'</span>,db=<span class="string">'awesome'</span>)</div><div class="line">    <span class="keyword">global</span> __pool</div><div class="line">    <span class="keyword">with</span> (<span class="keyword">yield</span> <span class="keyword">from</span> __pool) <span class="keyword">as</span> conn:</div><div class="line">        user_id=next_id()</div><div class="line">        print(users.insert().values(name=<span class="string">'jinja2'</span>,id=user_id,passwd=pwd_user(user_id,<span class="string">'123456'</span>),</div><div class="line">                                                       email=<span class="string">'222@qq.com'</span>,image=<span class="string">'image:blank'</span>))</div><div class="line">        res = <span class="keyword">yield</span> <span class="keyword">from</span> conn.execute(users.select())</div><div class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> res:</div><div class="line">            print(row)</div><div class="line"></div><div class="line"></div><div class="line">loop=asyncio.get_event_loop()</div><div class="line">loop.run_until_complete(go(loop))</div><div class="line"></div><div class="line">__pool.close()</div><div class="line">loop.run_until_complete(__pool.wait_closed())</div><div class="line">loop.close()</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;web框架使用&lt;code&gt;aiohttp&lt;/code&gt;,模板引擎&lt;code&gt;jinja2&lt;/code&gt;,数据库操作使用&lt;code&gt;aiomysql&lt;/code&gt;稍作封装的一个&lt;code&gt;ORM&lt;/code&gt;(廖雪峰的教程上提供的 &lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014323389656575142d0bcfeec434e9639a80d3684a7da000&quot;&gt;编写ORM&lt;/a&gt;)&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="python" scheme="http://nodejs.wxwztj.com/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://nodejs.wxwztj.com/tags/python/"/>
-    
-      <category term="nohup" scheme="http://nodejs.wxwztj.com/tags/nohup/"/>
-    
-      <category term="aiohttp" scheme="http://nodejs.wxwztj.com/tags/aiohttp/"/>
-    
-      <category term="jinja2" scheme="http://nodejs.wxwztj.com/tags/jinja2/"/>
     
   </entry>
   

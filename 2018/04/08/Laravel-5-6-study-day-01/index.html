@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/9 | 王纯建的博客</title>
+  <title>Laravel 5.6 study day 01 | 王纯建的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用hexo搭建的一个博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王纯建的博客">
-<meta property="og:url" content="http://nodejs.wxwztj.com/archives/2016/09/page/2/index.html">
+  <meta name="description" content="配置环境XAMPP XAMPP for Windows 7.2.3 (PHP 7.2.3)下载地址
+Composer安装后 修改为国内镜像
+12composer config -g repo.packagist composer https://packagist.phpcomposer.comcomposer global require &amp;quot;laravel/installer&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 5.6 study day 01">
+<meta property="og:url" content="http://nodejs.wxwztj.com/2018/04/08/Laravel-5-6-study-day-01/index.html">
 <meta property="og:site_name" content="王纯建的博客">
-<meta property="og:description" content="使用hexo搭建的一个博客">
+<meta property="og:description" content="配置环境XAMPP XAMPP for Windows 7.2.3 (PHP 7.2.3)下载地址
+Composer安装后 修改为国内镜像
+12composer config -g repo.packagist composer https://packagist.phpcomposer.comcomposer global require &amp;quot;laravel/installer&amp;quot">
+<meta property="og:image" content="http://www2.wxwztj.com/uploads/1804/20180408155025_106.jpg">
+<meta property="og:image" content="http://www2.wxwztj.com/uploads/1804/20180408155318_385.jpg">
+<meta property="og:updated_time" content="2018-04-10T00:35:06.382Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王纯建的博客">
-<meta name="twitter:description" content="使用hexo搭建的一个博客">
+<meta name="twitter:title" content="Laravel 5.6 study day 01">
+<meta name="twitter:description" content="配置环境XAMPP XAMPP for Windows 7.2.3 (PHP 7.2.3)下载地址
+Composer安装后 修改为国内镜像
+12composer config -g repo.packagist composer https://packagist.phpcomposer.comcomposer global require &amp;quot;laravel/installer&amp;quot">
+<meta name="twitter:image" content="http://www2.wxwztj.com/uploads/1804/20180408155025_106.jpg">
   
     <link rel="alternate" href="/atom.xml" title="王纯建的博客" type="application/atom+xml">
   
@@ -64,44 +74,62 @@
 </header>
         
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/09/06/python-metaclass-django-orm-demo/" class="archive-article-date">
-  <time datetime="2016-09-06T08:28:00.000Z" itemprop="datePublished">Sep 6</time>
+        <section id="main"><article id="post-Laravel-5-6-study-day-01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/08/Laravel-5-6-study-day-01/" class="article-date">
+  <time datetime="2018-04-08T07:26:00.000Z" itemprop="datePublished">2018-04-08</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/06/python-metaclass-django-orm-demo/">python metaclass django orm demo</a>
+    <h1 class="article-title" itemprop="name">
+      Laravel 5.6 study day 01
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h4><p>XAMPP <a href="https://www.apachefriends.org/zh_cn/index.html" target="_blank" rel="external">XAMPP for Windows 7.2.3 (PHP 7.2.3)下载地址</a></p>
+<p>Composer安装后 修改为国内镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">composer config -g repo.packagist composer https://packagist.phpcomposer.com</div><div class="line">composer global require &quot;laravel/installer&quot;</div></pre></td></tr></table></figure>
+<p>由于墙的存在<br>执行命令  <code>laravel new blog</code><br>悲剧了，出现错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cURL error 7: Failed to connect to cabinet.laravel.com port 80: Timed out……</div></pre></td></tr></table></figure></p>
+<p>我们可以直接用 Composer 创建 Laravel 项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project --prefer-dist laravel/laravel blog</div></pre></td></tr></table></figure></p>
+<h6 id="laravel-生成-blog-的目录结构"><a href="#laravel-生成-blog-的目录结构" class="headerlink" title="laravel 生成 blog 的目录结构"></a>laravel 生成 blog 的目录结构</h6><p><img src="http://www2.wxwztj.com/uploads/1804/20180408155025_106.jpg" alt="laravel blog 目录结构" title="laravel blog 目录结构"><br>Xampp配置虚拟站点 <code>G:\xampp\apache\conf\extra\http-vhosts.conf</code> 文件添加下面代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">    DocumentRoot &quot;G:/xampp/htdocs/Laravel/blog/public&quot;</div><div class="line">    ServerName www.laravel.cc</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure></p>
+<p>重启<code>XAMPP</code>的<code>apache</code>服务<br><img src="http://www2.wxwztj.com/uploads/1804/20180408155318_385.jpg" alt="首页效果" title="首页效果"></p>
+<h4 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4><p>由于你的环境中可能全局安装了<code>phpunit</code> 如果想调用Laravel自带的 需要使用<code>vendor\bin\phpunit</code>命令。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Create a test in the Feature directory...</span></div><div class="line">php artisan make:test UserTest</div><div class="line"></div><div class="line"><span class="comment">// Create a test in the Unit directory...</span></div><div class="line">php artisan make:test UserTest --unit</div><div class="line"></div><div class="line">G:\xampp\htdocs\Laravel\blog&gt;vendor\bin\phpunit -V</div><div class="line">PHPUnit <span class="number">7.1</span><span class="number">.1</span> by Sebastian</div><div class="line"></div><div class="line">unrecognized option -- V</div><div class="line"></div><div class="line">G:\xampp\htdocs\Laravel\blog&gt;phpunit -V</div><div class="line">PHPUnit <span class="number">3.7</span><span class="number">.21</span> by Sebastia</div><div class="line"></div><div class="line">unrecognized option -- V</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://nodejs.wxwztj.com/2018/04/08/Laravel-5-6-study-day-01/" data-id="cjivgdrnl00006g6nrvp1n3fa" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php7/">php7</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/09/IIS-FTP连接报530User-cannot-logged-in/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">IIS FTP连接报530User cannot logged in</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/2016/09/">&laquo; __('prev')</a><a class="page-number" href="/archives/2016/09/">1</a><span class="page-number current">2</span>
-  </nav>
 </section>
         
           <aside id="sidebar">
